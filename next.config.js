@@ -4,4 +4,11 @@ const nextConfig = {
   swcMinify: true,
 }
 
+
+module.exports = {
+  images: {
+    disableStaticImages: false
+  }
+}
+
 module.exports = nextConfig
