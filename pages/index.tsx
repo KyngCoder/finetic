@@ -2,7 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Banner from "../components/Banner";
 import Navbar from "../components/Navbar";
+import Perks from "../components/Perks";
 import Starter from "../components/Starter";
+import Testimonal from "../components/Testimonal";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +18,8 @@ const Home: NextPage = () => {
 <Navbar />
 <Banner />
 <Starter />
+<Perks />
+<Testimonal />
     </div>
   );
 };

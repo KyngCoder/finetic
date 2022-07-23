@@ -9,9 +9,9 @@ import banner6 from "../public/banner6.jpg";
 
 const Banner = () => {
   return (
-    <section className="lg:flex max-w-7xl xl:px-72">
+    <section className="lg:flex max-w-7xl xl:px-72 ">
       <div className="p-8 ">
-        <h1 className="text-6xl mb-4">Investing Made Simple</h1>
+        <h1 className="text-6xl mb-4 font-extrabold">Investing Made Simple</h1>
         <h3 className="mb-4 text-lg">
           Meet the platform that gives you the tools, inpiration and community
           you need to become a better investor.
@@ -19,8 +19,8 @@ const Banner = () => {
         <button className="bg-blue-800 w-32 rounded-full p-4 text-lg">Get Started</button>
       </div>
 
-      <div className="p-8 ">
-        <Image src={banner6} alt="banner" width={600} height={600} />
+      <div className=" m-4 rounded-lg">
+        <Image src={banner6} alt="banner"  />
       </div>
     </section>
   );

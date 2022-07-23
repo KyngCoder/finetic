@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import logo1 from "../public/Finetic (3).png";
+import {GiHamburgerMenu} from 'react-icons/gi'
+import {SiBitcoinsv} from 'react-icons/si'
 
 const Navbar = () => {
   const [toggleMenu,setToggleMenu] = useState(false)
@@ -20,42 +22,42 @@ const Navbar = () => {
       <div className="flex space-x-5 py-8 px-4  ">
         <button className="w-24 h-8">Sign In</button>
         <button className="rounded-full w-24 h-8  bg-blue-700 ">Sign-Up</button>
-        {/* <GiHamburgerMenu
+        <GiHamburgerMenu
           className="text-white sm:hidden absolute top-6 right-10"
           onClick={() => setToggleMenu(true)}
-        /> */}
+        />
       </div>
       <div>
         {toggleMenu && (
-          <div className="fixed top-0 left-0 w-screen h-screen black duration-200 ease-out z-10 flex justify-center ">
-            <GiDiamondRing
+          <div className="fixed top-0 left-0 w-screen h-screen back duration-200 ease-out z-10 flex justify-center ">
+            <SiBitcoinsv
               className=" text-white absolute  right-20 mb-8 mt-4 text-2xl cursor-pointer"
               onClick={() => setToggleMenu(false)}
             />
             <ul className="mt-10">
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
                 <a href="#home" onClick={() => setToggleMenu(false)}>
-                  Home
+                  Community
                 </a>
               </li>
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
                 <a href="#about" onClick={() => setToggleMenu(false)}>
-                  About
+                  Market
                 </a>
               </li>
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
                 <a href="#about" onClick={() => setToggleMenu(false)}>
-                  Place Order
+                  Learn
                 </a>
               </li>
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
-                <a href="#menu">Menu</a>
+                <a href="#menu">Support</a>
               </li>
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
-                <a href="#awards">Login</a>
+                <a href="#awards">SignIn</a>
               </li>
               <li className="m-4 cursor-pointer primary-color text-2xl text-center font hover:text-white">
-                <a href="#contact">Contact</a>
+                <a href="#contact">Sign Up</a>
               </li>
             </ul>
           </div>
