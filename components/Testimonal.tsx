@@ -57,7 +57,7 @@ const Testimonal = () => {
   };
 
   return (
-    <section className="mt-16 p-8">
+    <section className="mt-16 p-8  max-w-7xl xl:px-72 ">
          <div>
             <h1 className="text-4xl mb-8">See what Others have to say</h1>
           </div>

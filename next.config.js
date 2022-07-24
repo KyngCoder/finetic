@@ -7,7 +7,8 @@ const nextConfig = {
 
 module.exports = {
   images: {
-    disableStaticImages: false
+    disableStaticImages: false,
+    
   }
 }
 

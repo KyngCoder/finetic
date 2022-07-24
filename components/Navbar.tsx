@@ -23,7 +23,7 @@ const Navbar = () => {
         <button className="w-24 h-8">Sign In</button>
         <button className="rounded-full w-24 h-8  bg-blue-700 ">Sign-Up</button>
         <GiHamburgerMenu
-          className="text-white sm:hidden absolute top-6 right-10"
+          className="text-white sm:hidden absolute cursor-pointer top-6 right-10"
           onClick={() => setToggleMenu(true)}
         />
       </div>
