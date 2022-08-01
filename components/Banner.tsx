@@ -6,6 +6,7 @@ import banner3 from "../public/banner3.jpg";
 import banner4 from "../public/banner4.jpg";
 import banner5 from "../public/5.jpg";
 import banner6 from "../public/banner6.jpg";
+import Link from 'next/link'
 
 const Banner = () => {
   return (
@@ -16,7 +17,10 @@ const Banner = () => {
           Meet the platform that gives you the tools, inpiration and community
           you need to become a better investor.
         </h3>
+        <Link href="registration/signup">
         <button className="bg-blue-800 w-32 rounded-full p-4 text-lg">Get Started</button>
+        </Link>
+        
       </div>
 
       <div className=" m-4 rounded-lg">

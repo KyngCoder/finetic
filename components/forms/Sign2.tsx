@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-export const SignTwo = () => {
+ const Sign2 = () => {
 
     const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -120,3 +120,4 @@ export const SignTwo = () => {
   </form>
   )
 }
+export default Sign2
