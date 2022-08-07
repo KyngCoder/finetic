@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import Sign1 from "../../components/forms/Sign1";
 import Sign2 from "../../components/forms/Sign2";
 import { Sign3 } from "../../components/forms/Sign3";
+import Sign4 from "../../components/forms/Sign4";
 
 const signup = () => {
   const [step, setStep] = useState(1);
@@ -55,7 +56,7 @@ const signup = () => {
         </div>
 
         <div>
-          <Sign3 />
+          <Sign4 />
         </div>
 
         <div className=" w-full color mt-8 flex justify-center space-x-10 back pb-4">
