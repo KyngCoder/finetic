@@ -12,20 +12,9 @@ import Sign4 from "../../components/forms/Sign4";
 const signup = () => {
   const [step, setStep] = useState(1);
 
-  const router = useRouter();
-
-  //get location
-
-  // axios.get('https://api.ipregistry.co/?key=tryout')
-  //  .then((response:any) => {
-  //     return response.json()
-  //  })
-  //   .then((payload:any) => {
-  //       console.log(payload.location.country.name);
-  //   });
 
   const nextForm = () => {
-    if (step < 4) {
+    if (step < 5) {
       setStep((step) => step + 1);
     }
   };
@@ -33,6 +22,13 @@ const signup = () => {
   const previousForm = () => {
     if (step > 1) setStep((step) => step - 1);
   };
+
+  const displayPage = () => {
+    if(step===1)return(<Sign1 />)
+    else if(step===2) return <Sign2 />
+    else if(step===3) return <Sign3 />
+    else if(step === 4) return <Sign4 />
+  }
 
   return (
     <div
@@ -50,13 +46,14 @@ const signup = () => {
               { label: "step 2" },
               { label: "step 3" },
               { label: "step 4" },
+              { label: "step 5" },
             ]}
             currentStep={step}
           />
         </div>
 
         <div>
-          <Sign4 />
+          {displayPage()}
         </div>
 
         <div className=" w-full color mt-8 flex justify-center space-x-10 back pb-4">
@@ -71,7 +68,7 @@ const signup = () => {
             className="bg-green-500 rounded-sm p-2 text-md cursor-pointer"
             onClick={nextForm}
           >
-            Next
+          {step===5?'Submit':'Next'}
           </button>
         </div>
       </div>
