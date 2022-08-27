@@ -1,8 +1,10 @@
-import React, { useState } from "react";
 
-const Sign1 = () => {
-  const [country, setCountry] = useState("");
-  // function to get user ip address
+import React, {FC,ChangeEvent } from "react";
+import { useAuth } from "../../context/UserData";
+
+const Sign1: FC = () => {
+  const { country, setCountry, residence, setResidence, agree, setAgree } =
+    useAuth();
 
   return (
     <div className="color back mx-12 md:mx-28">
@@ -15,20 +17,24 @@ const Sign1 = () => {
         <input
           type="text"
           value={country}
-          onChange={(e) => setCountry(e.target.value)}
+          onChange={(e:ChangeEvent<HTMLInputElement>) => setCountry(e.target.value)}
           placeholder="enter your country"
           className="w-1/2 p-2 text-black"
         />
       </div>
 
-      <p>Are you a citizen or tax resident in another country?</p>
+      <label htmlFor="residence1">
+        Are you a citizen or tax resident in another country?
+      </label>
 
       <div className="flex items-center space-x-2 my-4">
         <input
-          id="default-radio-1"
+          id="residence1"
           type="radio"
           name="default-radio"
           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 "
+          value={residence}
+          onChange={() => setResidence("yes")}
         />
         <label
           htmlFor="Yes button"
@@ -39,14 +45,15 @@ const Sign1 = () => {
 
         <input
           checked
-          id="default-radio-2"
+          id="radio2"
           type="radio"
-          value=""
+          value={residence}
           name="default-radio"
           className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          onChange={() => setResidence("no")}
         />
         <label
-          htmlFor="default-radio-2"
+          htmlFor="radio2"
           className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
         >
           No
@@ -61,6 +68,7 @@ const Sign1 = () => {
             value=""
             className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
             required={true}
+            onClick={() => setAgree("yes")}
           />
         </div>
         <label
@@ -72,7 +80,7 @@ const Sign1 = () => {
             href="#"
             className="text-blue-600 hover:underline dark:text-blue-500"
           >
-            terms and conditions
+            {agree ? "agree" : "no"} terms and conditions
           </a>
         </label>
       </div>

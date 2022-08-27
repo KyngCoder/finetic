@@ -1,21 +1,68 @@
 import React, { useState, useEffect } from "react";
 import Stepper from "react-stepper-js";
 import "react-stepper-js/dist/index.css";
-import Link from "next/link";
-
 import { useRouter } from "next/router";
 import Sign1 from "../../components/forms/Sign1";
 import Sign2 from "../../components/forms/Sign2";
 import { Sign3 } from "../../components/forms/Sign3";
 import Sign4 from "../../components/forms/Sign4";
+import { Sign5 } from "../../components/forms/Sign5";
+import { useAuth } from "../../context/UserData";
 
 const signup = () => {
   const [step, setStep] = useState(1);
 
+  const router = useRouter()
+
+  const {
+    firstName,
+    lastName,
+    country,
+    addressLineOne,
+    addressLineTwo,
+    city,
+    state,
+    zipCode,
+    telephone,
+    email,
+    password,
+    DOB,
+    residence,
+    employmentStatus,
+    sourceOfFunds,
+    annualIncome,
+    proofType,
+    imageProof,
+  } = useAuth();
 
   const nextForm = () => {
     if (step < 5) {
       setStep((step) => step + 1);
+    }
+    if (step === 5) {
+      console.log(
+        {
+          firstName,
+          lastName,
+          country,
+          addressLineOne,
+          addressLineTwo,
+          city,
+          state,
+          zipCode,
+          telephone,
+          email,
+          password,
+          DOB,
+          residence,
+          employmentStatus,
+          sourceOfFunds,
+          annualIncome,
+          proofType,
+          imageProof,
+        }
+      );
+      router.replace('/profile/Profile')
     }
   };
 
@@ -24,11 +71,12 @@ const signup = () => {
   };
 
   const displayPage = () => {
-    if(step===1)return(<Sign1 />)
-    else if(step===2) return <Sign2 />
-    else if(step===3) return <Sign3 />
-    else if(step === 4) return <Sign4 />
-  }
+    if (step === 1) return <Sign1 />;
+    else if (step === 2) return <Sign2 />;
+    else if (step === 3) return <Sign3 />;
+    else if (step === 4) return <Sign4 />;
+    else if (step === 5) return <Sign5 />;
+  };
 
   return (
     <div
@@ -52,9 +100,7 @@ const signup = () => {
           />
         </div>
 
-        <div>
-          {displayPage()}
-        </div>
+        <div>{displayPage()}</div>
 
         <div className=" w-full color mt-8 flex justify-center space-x-10 back pb-4">
           <button
@@ -68,7 +114,7 @@ const signup = () => {
             className="bg-green-500 rounded-sm p-2 text-md cursor-pointer"
             onClick={nextForm}
           >
-          {step===5?'Submit':'Next'}
+            {step === 5 ? "Submit" : "Next"}
           </button>
         </div>
       </div>

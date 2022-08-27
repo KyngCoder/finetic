@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
+import { useAuth } from "../../context/UserData";
 
-const Sign4 = () => {
+const Sign4:FC = () => {
+
+const {employmentStatus,setEmploymentStatus,annualIncome,setAnnualIncome,sourceOfFunds,setSourceOfFunds} = useAuth()
+
   return (
     <>
       <div className="mb-4">
@@ -11,8 +15,10 @@ const Sign4 = () => {
           Select your employment status
         </label>
         <select
-          name="employStatus"
-          id="employStatus"
+        value={employmentStatus}
+          name="employed status"
+          onChange={(e:ChangeEvent<HTMLSelectElement>)=>setEmploymentStatus(e.target.value)}
+          id="employed"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option>Unemployed</option>
@@ -32,6 +38,8 @@ const Sign4 = () => {
           Source of funds
         </label>
         <select
+        value={sourceOfFunds}
+        onChange={(e:ChangeEvent<HTMLSelectElement>)=>setSourceOfFunds(e.target.value)}
           name="fundsource"
           id="source"
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -53,7 +61,9 @@ const Sign4 = () => {
         </label>
         <select
           name="employStatus"
-          id="employStatus"
+          id="income"
+          value={annualIncome}
+          onChange={(e:ChangeEvent<HTMLSelectElement>)=>setAnnualIncome(e.target.value)}
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option>Less than 15k</option>

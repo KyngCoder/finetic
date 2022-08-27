@@ -1,13 +1,29 @@
-import React from "react";
+import React, { FC, ChangeEvent } from "react";
+import { useAuth } from "../../context/UserData";
 
-export const Sign3 = () => {
+export const Sign3: FC = () => {
+  const {
+    addressLineOne,
+    setAddressLineOne,
+    addressLineTwo,
+    setAddressLineTwo,
+    city,
+    setCity,
+    state,
+    setState,
+    zipCode,
+    setZipCode,
+    country,
+    setCountry,
+    telephone,
+    setTelephone,
+  } = useAuth();
+
   return (
     <div className=" p-8">
       <div>
         <h2 className="mb-4 text-2xl font-bold color">Contact and Address</h2>
       </div>
-     
-  
 
       <div className="w-full md:w-96 md:max-w-full mx-auto">
         <div className="p-6  sm:rounded-md">
@@ -28,6 +44,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={addressLineOne}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setAddressLineOne(e.target.value)}
               placeholder=""
             />
           </label>
@@ -48,6 +66,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={addressLineTwo}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setAddressLineTwo(e.target.value)}
               placeholder=""
             />
           </label>
@@ -67,8 +87,9 @@ export const Sign3 = () => {
             focus:ring
             focus:ring-indigo-200
             focus:ring-opacity-50
-            
           "
+          value={city}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setCity(e.target.value)}
               placeholder=""
             />
           </label>
@@ -89,6 +110,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={state}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setState(e.target.value)}
               placeholder=""
             />
           </label>
@@ -109,6 +132,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={zipCode}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setZipCode(+(e.target.value))}
               placeholder=""
             />
           </label>
@@ -129,6 +154,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={country}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setCountry(e.target.value)}
               placeholder=""
             />
           </label>
@@ -149,6 +176,8 @@ export const Sign3 = () => {
             focus:ring-indigo-200
             focus:ring-opacity-50
           "
+          value={telephone}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setTelephone(e.target.value)}
               placeholder=""
             />
           </label>

@@ -72,8 +72,8 @@ const Testimonal = () => {
        
         grabCursor={true}
         navigation={true}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log("slide change")}
+        // onSwiper={(swiper) => console.log(swiper)}
         breakpoints={{
           0: {
             slidesPerView: 2,
@@ -96,7 +96,7 @@ const Testimonal = () => {
             <div className="flex ">
               {text?.map((info, id) => {
                 return (
-                    <SwiperSlide>
+                    <SwiperSlide key={`${info}${id}`}>
 
                   <div className="shadow-lg bg-black p-4 mx-2">
                     <p className="mb-4">{info.text}</p>
