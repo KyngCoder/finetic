@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar";
 import Perks from "../components/Perks";
 import Starter from "../components/Starter";
 import Testimonal from "../components/Testimonal";
+import SignInForm from "./registration/SignInForm";
 
 
 const Home: NextPage = () => {
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
       <Perks />
       <Testimonal />
       <Footer />
+    
     </div>
   );
 };

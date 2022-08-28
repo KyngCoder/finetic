@@ -8,9 +8,11 @@ import { Sign3 } from "../../components/forms/Sign3";
 import Sign4 from "../../components/forms/Sign4";
 import { Sign5 } from "../../components/forms/Sign5";
 import { useAuth } from "../../context/UserData";
+import axios from "axios";
 
 const signup = () => {
   const [step, setStep] = useState(1);
+  const [token,setToken] = useState('')
 
   const router = useRouter()
 
@@ -40,30 +42,29 @@ const signup = () => {
       setStep((step) => step + 1);
     }
     if (step === 5) {
-      console.log(
-        {
-          firstName,
-          lastName,
-          country,
-          addressLineOne,
-          addressLineTwo,
-          city,
-          state,
-          zipCode,
-          telephone,
-          email,
-          password,
-          DOB,
-          residence,
-          employmentStatus,
-          sourceOfFunds,
-          annualIncome,
-          proofType,
-          imageProof,
-        }
-      );
-      router.replace('/profile/Profile')
+     
+      axios.post('api/login',{
+        firstName,
+        lastName,
+        country,
+        addressLineOne,
+        addressLineTwo,
+        city,
+        state,
+        zipCode,
+        telephone,
+        email,
+        password,
+        DOB,
+        residence,
+        employmentStatus,
+        sourceOfFunds,
+        annualIncome,
+        proofType,
+        imageProof,
+      })
     }
+    token?router.replace('/profile/Profile') : router.replace('/')
   };
 
   const previousForm = () => {
