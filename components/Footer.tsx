@@ -1,56 +1,224 @@
-import React from "react";
-import Image from "next/image";
-import logo from "../public/Finetic (3).png";
-import inst from "../public/Instagram-Logo.wine.svg";
-import twit from "../public/Twitter-Logo.wine.svg";
-import link from "../public/LinkedIn-Icon-Logo.wine.svg";
-import face from "../public/Facebook-f_Logo-White-Logo.wine.svg";
-
-const Footer = () => {
+export const Footer = () => {
   return (
-    <footer className=" p-8 lg:flex max-w-7xl xl:pl-72 pr-16 flex-col">
-      <div className=" md:flex justify-between">
-        <div className="mb-8">
-          <h2 className="text-4xl font-bold mb-4">Have any questions?</h2>
-          <button className="bg-green-500 rounded-full px-4 py-2  border-4">Contact Support</button>
+    <div className="back">
+      <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
+          <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
+            <div>
+              <p className="font-medium tracking-wide text-gray-300">
+                Help
+              </p>
+              <ul className="mt-2 space-y-2">
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Help center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Expert Guidance
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Legal
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-medium tracking-wide text-gray-300">Company</p>
+              <ul className="mt-2 space-y-2">
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Investor Relations
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    About us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Our Customers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Careers
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-medium tracking-wide text-gray-300">Product</p>
+              <ul className="mt-2 space-y-2">
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Stocks Investment
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Educational
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Crypto
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Fractional Shares
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Arts
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Personal Trainer
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-medium tracking-wide text-gray-300">
+               Tools
+              </p>
+              <ul className="mt-2 space-y-2">
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Retirement Planning
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Track your goals
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    All-in-one dashboard
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
+                  >
+                    Refer-a-friend program
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
         </div>
-        <div>
-          <h4 className="mb-4 font-bold">Products</h4>
-          <p>Stocks</p>
-          <p>ETF's</p>
-          <p>Crypto</p>
-          <p>Robo Advisor</p>
+        <div className="flex flex-col justify-between pt-5 pb-10 border-t border-gray-800 sm:flex-row">
+          <p className="text-sm text-gray-500">
+            © Copyright 2020 Lorem Inc. All rights reserved.
+          </p>
+          <div className="flex items-center mt-4 space-x-4 sm:mt-0">
+            <a
+              href="/"
+              className="text-gray-500 transition-colors duration-300 hover:text-teal-accent-400"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
+                <path d="M24,4.6c-0.9,0.4-1.8,0.7-2.8,0.8c1-0.6,1.8-1.6,2.2-2.7c-1,0.6-2,1-3.1,1.2c-0.9-1-2.2-1.6-3.6-1.6 c-2.7,0-4.9,2.2-4.9,4.9c0,0.4,0,0.8,0.1,1.1C7.7,8.1,4.1,6.1,1.7,3.1C1.2,3.9,1,4.7,1,5.6c0,1.7,0.9,3.2,2.2,4.1 C2.4,9.7,1.6,9.5,1,9.1c0,0,0,0,0,0.1c0,2.4,1.7,4.4,3.9,4.8c-0.4,0.1-0.8,0.2-1.3,0.2c-0.3,0-0.6,0-0.9-0.1c0.6,2,2.4,3.4,4.6,3.4 c-1.7,1.3-3.8,2.1-6.1,2.1c-0.4,0-0.8,0-1.2-0.1c2.2,1.4,4.8,2.2,7.5,2.2c9.1,0,14-7.5,14-14c0-0.2,0-0.4,0-0.6 C22.5,6.4,23.3,5.5,24,4.6z" />
+              </svg>
+            </a>
+            <a
+              href="/"
+              className="text-gray-500 transition-colors duration-300 hover:text-teal-accent-400"
+            >
+              <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
+                <circle cx="15" cy="15" r="4" />
+                <path d="M19.999,3h-10C6.14,3,3,6.141,3,10.001v10C3,23.86,6.141,27,10.001,27h10C23.86,27,27,23.859,27,19.999v-10   C27,6.14,23.859,3,19.999,3z M15,21c-3.309,0-6-2.691-6-6s2.691-6,6-6s6,2.691,6,6S18.309,21,15,21z M22,9c-0.552,0-1-0.448-1-1   c0-0.552,0.448-1,1-1s1,0.448,1,1C23,8.552,22.552,9,22,9z" />
+              </svg>
+            </a>
+            <a
+              href="/"
+              className="text-gray-500 transition-colors duration-300 hover:text-teal-accent-400"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
+                <path d="M22,0H2C0.895,0,0,0.895,0,2v20c0,1.105,0.895,2,2,2h11v-9h-3v-4h3V8.413c0-3.1,1.893-4.788,4.659-4.788 c1.325,0,2.463,0.099,2.795,0.143v3.24l-1.918,0.001c-1.504,0-1.795,0.715-1.795,1.763V11h4.44l-1,4h-3.44v9H22c1.105,0,2-0.895,2-2 V2C24,0.895,23.105,0,22,0z" />
+              </svg>
+            </a>
+          </div>
         </div>
-        <div>
-          <h4 className="mb-4 font-bold mt-4 md:mt-0">Who We Are</h4>
-          <p>About</p>
-          <p>Careers</p>
-        </div>
-        <div>
-          <h4 className="mb-4 mt-4 md:mt-0 font-bold">Why Start Now</h4>
-          <p>Grow your knowledge</p>
-          <p>Money Basics</p>
-        </div>
+        <p>
+          Legalities coming soon
+        </p>
       </div>
-
-      <div className="md:flex">
-        <Image src={logo} alt="logo" height={200} width={200}   />
-        <div className="flex pt-20 space-x-5 text-lg mr-4 mb-4">
-          <p>Pricing</p>
-          <p>Store</p>
-          <p>Legal</p>
-          <p> Privacy Policy</p>
-        </div>
-
-        <div className="flex">
-          <Image src={inst} alt="instagram" width={60} height={60} />
-          <Image src={twit} width={60} height={60} />
-          <Image src={link} alt="linkedin" width={60} height={60} />
-          <Image src={face} alt="facebook" width={60} height={60} />
-        </div>
-      </div>
-    </footer>
+    </div>
   );
 };
-
-export default Footer;

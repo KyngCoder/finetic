@@ -2,12 +2,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { ChangeEvent, useState } from "react";
 import Banner from "../components/Banner";
-import Footer from "../components/Footer";
+import Clients from "../components/Clients";
+import CTA from "../components/CTA";
+import { Footer } from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Perks from "../components/Perks";
 import Starter from "../components/Starter";
+import Stats from "../components/Stats";
+import Test from "../components/Test";
 import Testimonal from "../components/Testimonal";
-import SignInForm from "./registration/SignInForm";
+// import SignInForm from "./registration/SignInForm";
 
 
 const Home: NextPage = () => {
@@ -23,10 +27,12 @@ const Home: NextPage = () => {
       <Navbar />
       <Banner />
       <Starter />
+      <Stats />
       <Perks />
       <Testimonal />
-      <Footer />
-    
+      <Clients />
+      <CTA />
+     <Footer />
     </div>
   );
 };

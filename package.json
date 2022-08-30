@@ -23,6 +23,7 @@
     "react-icons": "^4.4.0",
     "react-stepper-js": "^1.0.4",
     "swiper": "^8.3.1",
+    "uploader": "^1.48.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {

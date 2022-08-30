@@ -7,9 +7,9 @@ import {SiBitcoinsv} from 'react-icons/si'
 const Navbar = () => {
   const [toggleMenu,setToggleMenu] = useState(false)
   return (
-    <nav className="flex justify-between w-screen max-w-7xl xl:justify-center ">
+    <nav className="flex justify-between w-screen max-w-7xl  ">
       <div className="flex px-4 ">
-        <Image src={logo1} alt="logo" width={100} height={100}  />
+        <Image src={logo1} alt="logo" width={120} height={120}  />
 
         <div className="flex space-x-5 hidden md:flex xl:text-lg space-x-7 ">
           <p className="pt-8 cursor-pointer">Community</p>
@@ -20,8 +20,6 @@ const Navbar = () => {
       </div>
 
       <div className="flex space-x-5 py-8 px-4  ">
-        <button className="w-24 h-8">Sign In</button>
-        <button className="rounded-full w-24 h-8  bg-blue-700 ">Sign-Up</button>
         <GiHamburgerMenu
           className="text-white sm:hidden absolute cursor-pointer top-6 right-10"
           onClick={() => setToggleMenu(true)}
