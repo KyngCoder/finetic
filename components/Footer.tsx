@@ -1,8 +1,14 @@
+import Image from 'next/image';
+import fin from '../public/fin.png'
+
 export const Footer = () => {
   return (
     <div className="back">
       <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="grid row-gap-10 mb-8 lg:grid-cols-6">
+        <div className="flex items-center  mx-4 justify-center h-full">
+              <Image src={fin} />
+            </div>
           <div className="grid grid-cols-2 gap-5 row-gap-8 lg:col-span-4 md:grid-cols-4">
             <div>
               <p className="font-medium tracking-wide text-gray-300">
@@ -181,7 +187,6 @@ export const Footer = () => {
               </ul>
             </div>
           </div>
-          
         </div>
         <div className="flex flex-col justify-between pt-5 pb-10 border-t border-gray-800 sm:flex-row">
           <p className="text-sm text-gray-500">

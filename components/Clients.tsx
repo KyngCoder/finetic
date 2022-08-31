@@ -6,9 +6,9 @@ const Clients = () => {
   return (
     <section className="flex justify-center items-center my-4 px-16">
       <div className="flex justify-center items-center flex-wrap w-full">
-       {clients.map(client => {
+       {clients.map((client,index) => {
         return(
-            <div className="flex-1 flex justify-center items-center max-w-lg m-5">
+            <div key={`${client}${index}`} className="flex-1 flex justify-center items-center max-w-lg m-5">
             <Image
               src={client.logo}
               alt="client_logo"

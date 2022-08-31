@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import Button from "./Button";
 
@@ -15,13 +16,14 @@ const Starter = () => {
             money, and grow your knowledge each day.
           </p>
           <div className="flex items-center">
-            <Button text="Get Started" size="md" />
+            <Button text="Get Started" />
+
             <button className="ml-4  text-gray-900 bg-gray-100 border-0  px-4 focus:outline-none hover:bg-gray-200 rounded text-lg h-10 mb-1 grid items-center">
               Read More
             </button>
           </div>
         </div>
-        <div className="grid gap-5 row-gap-5 sm:grid-cols-2">
+        <div className="grid gap-5 row-gap-5 sm:grid-cols-2 px-4 md:px-0">
           <div className="max-w-md">
             <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50">
               <svg

@@ -30,9 +30,9 @@ const Banner = () => {
           you need to become a better investor.
         </p>
         <div className="flex justify-center mb-4">
-        <Link href="registration/signup">
-          <Button text="Get Started" />
-          </Link>
+       
+              <Button text="Get Started" />
+          
           <button className="ml-4 inline-flex text-gray-9 bg-gray-100 border-0  px-4 focus:outline-none hover:bg-gray-200 rounded text-lg h-10 mt-1 grid items-center">
             Read More
           </button>

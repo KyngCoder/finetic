@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Stepper from "react-stepper-js";
-import "react-stepper-js/dist/index.css";
+import { Step, Stepper } from "react-form-stepper";
 import { useRouter } from "next/router";
 import Sign1 from "../../components/forms/Sign1";
 import Sign2 from "../../components/forms/Sign2";
@@ -11,10 +10,10 @@ import { useAuth } from "../../context/UserData";
 import axios from "axios";
 
 const signup = () => {
-  const [step, setStep] = useState(1);
-  const [token,setToken] = useState('')
+  const [step, setStep] = useState(0);
+  const [token, setToken] = useState("");
 
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     firstName,
@@ -42,8 +41,7 @@ const signup = () => {
       setStep((step) => step + 1);
     }
     if (step === 5) {
-     
-      axios.post('api/login',{
+      axios.post("api/login", {
         firstName,
         lastName,
         country,
@@ -62,9 +60,9 @@ const signup = () => {
         annualIncome,
         proofType,
         imageProof,
-      })
+      });
+      token ? router.replace("/profile/Profile") : router.replace("/");
     }
-    token?router.replace('/profile/Profile') : router.replace('/')
   };
 
   const previousForm = () => {
@@ -72,33 +70,27 @@ const signup = () => {
   };
 
   const displayPage = () => {
-    if (step === 1) return <Sign1 />;
-    else if (step === 2) return <Sign2 />;
-    else if (step === 3) return <Sign3 />;
-    else if (step === 4) return <Sign4 />;
-    else if (step === 5) return <Sign5 />;
+    if (step === 0) return <Sign1 />;
+    else if (step === 1) return <Sign2 />;
+    else if (step === 2) return <Sign3 />;
+    else if (step === 3) return <Sign4 />;
+    else if (step === 4) return <Sign5 />;
   };
 
   return (
     <div
-      className=" flex h-screen w-screen justify-center my-8
+      className="flex h-screen w-screen justify-center py-8
     overflow-x-hidden  back"
     >
       <div className="  rounded-md shadow-md">
         <div className="App my-4">
-          <Stepper
-            color="#23b561"
-            fontSize="20px"
-            fontColor="#18aed6"
-            steps={[
-              { label: "step 1" },
-              { label: "step 2" },
-              { label: "step 3" },
-              { label: "step 4" },
-              { label: "step 5" },
-            ]}
-            currentStep={step}
-          />
+          <Stepper activeStep={step}  connectorStateColors  >
+            <Step label="Children Step 1"  />
+            <Step label="Children Step 2" />
+            <Step label="Children Step 3" />
+            <Step label="Children Step 4" />
+            <Step label="Children Step 5"  />
+          </Stepper>
         </div>
 
         <div>{displayPage()}</div>

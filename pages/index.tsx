@@ -11,6 +11,7 @@ import Starter from "../components/Starter";
 import Stats from "../components/Stats";
 import Test from "../components/Test";
 import Testimonal from "../components/Testimonal";
+import Form from '../components/Form'
 // import SignInForm from "./registration/SignInForm";
 
 
