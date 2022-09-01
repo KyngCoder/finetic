@@ -11,7 +11,7 @@ import axios from "axios";
 
 const signup = () => {
   const [step, setStep] = useState(0);
-  const [token, setToken] = useState("");
+
 
   const router = useRouter();
 
@@ -36,12 +36,12 @@ const signup = () => {
     imageProof,
   } = useAuth();
 
-  const nextForm = () => {
+  const nextForm = async () => {
     if (step < 5) {
       setStep((step) => step + 1);
     }
     if (step === 5) {
-      axios.post("api/login", {
+      const {data} = await axios.post("http://localhost:3000/api/signup", {
         firstName,
         lastName,
         country,
@@ -61,7 +61,9 @@ const signup = () => {
         proofType,
         imageProof,
       });
-      token ? router.replace("/profile/Profile") : router.replace("/");
+      console.log(data)
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      router.push("/");
     }
   };
 

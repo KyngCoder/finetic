@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import logo1 from "../public/Finetic (3).png";
 import {GiHamburgerMenu} from 'react-icons/gi'
 import {SiBitcoinsv} from 'react-icons/si'
+import Link from "next/link";
 
 const Navbar = () => {
   const [toggleMenu,setToggleMenu] = useState(false)
   return (
-    <nav className="flex justify-between w-screen max-w-7xl  ">
+    <nav className="flex justify-between w-screen max-w-7xl  relative">
       <div className="flex px-4 ">
         <Image src={logo1} alt="logo" width={120} height={120}  />
 
@@ -25,6 +26,9 @@ const Navbar = () => {
           onClick={() => setToggleMenu(true)}
         />
       </div>
+  <Link href="/registration/signin">
+  <button className="absolute top-10 bg-blue-500 py-1 px-4 rounded-full text-lg right-28 lg:right-0">Login</button>
+  </Link>
       <div>
         {toggleMenu && (
           <div className="fixed top-0 left-0 w-screen h-screen back duration-200 ease-out z-10 flex justify-center ">

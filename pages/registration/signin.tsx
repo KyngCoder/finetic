@@ -1,17 +1,43 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai'
+import { useRouter } from "next/router";
+import axios from "axios"
 
-const signin = () => {
+const signin:FC = () => {
   const [email, setEmail] = useState('');
 
   const [password, setPassword] = useState('');
 
   const [show, setShow] = useState(false);
+  
+  const router = useRouter()
 
-  const fire = (event:any) => {
+  const fire = async (event:any) => {
     event?.preventDefault()
-    console.log(email,password)
-  }
+ 
+    if (!email || !password) {
+      alert("Please fill out all fields");
+      return;
+    }
+   
+    console.log(name, password);
+    try {
+      const { data } = await axios.post("http://localhost:3000/api/signin", {
+        email,
+        password,
+      });
+      console.log(data);
+      alert("Successfully Logged In!");
+      localStorage.setItem("userInfo", JSON.stringify(data));
+ 
+      router.push('/')
+    } catch (error) {
+      console.log(error);
+      alert("Error logging in");
+    }
+  };
+
+  
 
   return (
     <form className="h-screen w-screen flex justify-center items-center flex-col back">
@@ -29,7 +55,7 @@ const signin = () => {
           placeholder="name@flowbite.com"
           required={true}
           value={email}
-          onChange={()=>setEmail(event?.target.value)}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setEmail(e.target.value)}
         />
       </div>
       <div className="mb-6 relative">
@@ -45,7 +71,7 @@ const signin = () => {
           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light "
           required={true}
           value={password}
-          onChange={()=>setPassword(event?.target.value)}
+          onChange={(e:ChangeEvent<HTMLInputElement>)=>setPassword(e.target.value)}
         />
         {show ? (
           <AiFillEye

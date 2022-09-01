@@ -22,6 +22,8 @@ export default async function (req:NextApiRequest, res:NextApiResponse){
     case 'POST':
         const {email,password} = req.body
 
+        console.log(email,password)
+
         if(!email || !password) {
           return res.status(400).json({message:'all fields are required'})
         }

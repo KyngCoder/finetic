@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import banner1 from "../public/banner1.jpg";
 import banner2 from "../public/banner2.jpg";
 import banner3 from "../public/banner3.jpg";
@@ -12,6 +12,9 @@ import Button from "./Button";
 
 
 const Banner = () => {
+
+
+
   return (
     <section className="text-gray-600 dark:bg-gray-900 lg:px-36 px-8">
     <div className="container mx-auto flex py-4 md:flex-row flex-col items-center">
