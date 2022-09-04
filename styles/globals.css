@@ -20,6 +20,12 @@
   filter: blur(123px);
 }
 
-.button{
-  
+.display{
+  display:flex
+}
+
+@media screen and (max-width: 800px) {
+  .display {
+    display: none;
+  }
 }
