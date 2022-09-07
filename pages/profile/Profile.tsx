@@ -1,14 +1,17 @@
-import React,{useEffect} from 'react'
+import React,{useEffect, useState} from 'react'
 import Sidebar from '../../components/profile/Sidebar'
 import Tab from './Tab'
 import {MdFilterList} from 'react-icons/md'
 import {ImArrowUpRight,ImArrowDownLeft} from 'react-icons/im'
 import { BsFileArrowUp } from 'react-icons/bs'
 import axios from 'axios'
+import LineGraph from '../../components/graphs/LineGraph'
+
+
 
 const Profile = () => {
 
-  const key = 'sandbox_cbasedqad3i91bfqbkfg'
+  //const key = 'sandbox_cbasedqad3i91bfqbkfg'
 
   // useEffect(()=>{
   //   const data = axios.get(`https://finnhub.io/api/v1/search?q=apple&token=${key}`)
@@ -16,6 +19,8 @@ const Profile = () => {
   //   console.log(data)
     
   // },[])
+
+  
 
   return (
     <section className="flex w-screen">
@@ -50,7 +55,11 @@ const Profile = () => {
   </div>
   </div>
 </div>
-<div>main</div>
+<div>
+<div style={{ width: 700 }}>
+        <LineGraph  />
+      </div>
+</div>
       </div>
     </section>
   )
