@@ -3,9 +3,10 @@ import Sidebar from '../../components/profile/Sidebar'
 import Tab from './Tab'
 import {MdFilterList} from 'react-icons/md'
 import {ImArrowUpRight,ImArrowDownLeft} from 'react-icons/im'
-import { BsFileArrowUp } from 'react-icons/bs'
 import axios from 'axios'
-import LineGraph from '../../components/graphs/LineGraph'
+import Main from '../profile/Main'
+import Active from './Active'
+
 
 
 
@@ -35,29 +36,14 @@ const Profile = () => {
   <h2 className="text-2xl">Dashboard</h2>
   <MdFilterList />
 </div>
-<div className="bg-gray-900">
-  <div className="bg-white p-2 rounded-md max-w-sm">
-  <div className="flex justify-between items-center px-2">
-    <p className="bg-black text-white rounded-full px-2">Apple. inc</p>
-    <div className="text-black pt-2">
-      <p>AAPL</p>
-      <p>+1.8%</p>
-    </div>
-  </div>
-  <div className="text-black flex pt-4 justify-between items-center px-2">
-    <div>
-      <p>Portfolio</p>
-      <p>32,140.20</p>
-    </div>
-    <div>
-      <ImArrowUpRight className="text-green-600 h-6 w-6" />
-    </div>
-  </div>
-  </div>
-</div>
+
 <div>
-<div style={{ width: 700 }}>
-        <LineGraph  />
+<Active />
+</div>
+
+<div>
+<div className="bg-gray-900">
+<Main />
       </div>
 </div>
       </div>
