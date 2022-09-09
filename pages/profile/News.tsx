@@ -39,7 +39,7 @@ const News = () => {
   }
 
   return (
-    <div className="bg-gray-700 rounded-md shadow-md w-4/5 mx-8 p-4 ">
+    <div className="bg-gray-700 rounded-md shadow-md   p-4 ">
       <div>
         <div className="flex justify-between text-2xl">
           <h1>News</h1>

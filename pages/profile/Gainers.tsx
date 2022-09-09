@@ -9,7 +9,7 @@ const Gainers = () => {
   }, []);
 
   return (
-    <div>
+    <div className="">
         <h2 className="text-2xl px-4 mb-4">Top Gainers</h2>
       {Favourites.map((top) => {
         return (

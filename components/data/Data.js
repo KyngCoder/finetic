@@ -202,13 +202,7 @@ export const watchList =[
     "price": 30.6499,
     "changesPercentage": -0.00032359586
   },
-  {
-    "symbol": "EEM",
-    "name": "iShares MSCI Emerging Markets ETF",
-    "change": -0.26,
-    "price": 38.38,
-    "changesPercentage": -0.6728735
-  },
+ 
   {
     "symbol": "T",
     "name": "AT&T Inc.",
@@ -224,32 +218,11 @@ export const watchList =[
     "changesPercentage": 1.082543
   },
   {
-    "symbol": "APE",
-    "name": "AMC Entertainment Holdings, Inc.",
-    "change": 0.085,
-    "price": 5.165,
-    "changesPercentage": 1.6732291
-  },
-  {
     "symbol": "AAL",
     "name": "American Airlines Group Inc.",
     "change": 0.145,
     "price": 14.035,
     "changesPercentage": 1.0439129
-  },
-  {
-    "symbol": "ABEV",
-    "name": "Ambev S.A.",
-    "change": -0.045,
-    "price": 2.935,
-    "changesPercentage": -1.5100697
-  },
-  {
-    "symbol": "VALE",
-    "name": "Vale S.A.",
-    "change": -0.055,
-    "price": 12.215,
-    "changesPercentage": -0.44825023
   },
   {
     "symbol": "SHOP",
