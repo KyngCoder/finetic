@@ -10,23 +10,26 @@ const main = () => {
     <>
       <div className="flex justify-between">
         <div className="px-4 ">
-          {" "}
           <LineGraph />
         </div>
-        <div className="max-w-lg mt-4 mr-16"> <News /></div>
-        
-      </div>
-      <div className="flex px-4 justify-between ">
-      <div>
+        <div className="max-w-lg mt-4 mr-16">
           {" "}
+          <News />
+        </div>
+      </div>
+    
+        <div>
           <Gainers />
         </div>
         <div>
           <MyStock />
         </div>
 
-      <div className="mr-16">  <Watchlist /></div>
-      </div>
+        <div className="mr-16">
+        
+          <Watchlist />
+        </div>
+      
     </>
   );
 };

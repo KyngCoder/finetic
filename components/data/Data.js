@@ -1,3 +1,5 @@
+// stokmarket key f777da10da2c1a70cd2f09fc262d7533
+
 export const latestNews = [
     {
       "category": "top news",
@@ -88,6 +90,8 @@ export const latestNews = [
       "url": "https://www.bloomberg.com/news/articles/2022-09-08/uk-treasury-and-boe-set-up-liquidity-fund-to-back-energy-trading"
     },]
 
+
+    //https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=YOUR_API_KEY
 export const Favourites = [
     {
       "symbol": "PIXY",
@@ -140,7 +144,7 @@ export const Favourites = [
     },
     ]
 
-
+//https://financialmodelingprep.com/api/v3/stock_market/actives?apikey=YOUR_API_KEY
     export const actives = [
         {
           "symbol": "AMD",
@@ -194,6 +198,9 @@ export const Favourites = [
     ]
 
 
+
+ //https://financialmodelingprep.com/api/v3/stock_market/actives?apikey=YOUR_API_KEY
+
 export const watchList =[
        {
     "symbol": "INTC",
@@ -240,6 +247,8 @@ export const watchList =[
   },
 ]
 
+
+//https://financialmodelingprep.com/api/v3/available-traded/list?apikey=YOUR_API_KEY
 export const myStocks = [ {
     "symbol" : "SPY",
     "name" : "SPDR S&P 500 ETF Trust",
