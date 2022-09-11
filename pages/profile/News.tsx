@@ -41,11 +41,11 @@ const News = () => {
   return (
     <div className="bg-gray-700 rounded-md shadow-md   p-4 ">
       <div>
-        <div className="flex justify-between text-2xl">
+        <div className="flex justify-between text-2xl pb-4">
           <h1>News</h1>
           <p>{convertTimestamp(latestNews[0].datetime)[0]}</p>
         </div>
-        <p className="text-lg">{latestNews[0].headline}</p>
+        <p className="text-lg font-bold font">{latestNews[0].headline}</p>
       </div>
       <div className="flex pt-4 ">
         <div className="w-full mr-4 ">
@@ -54,12 +54,12 @@ const News = () => {
         <div>
           <div className="flex space-x-2 text-sm">
             <p>{latestNews[0].source}</p>
-            <p>{convertTimestamp(latestNews[0].datetime)[1]}</p>
+            <p className="pb-4">{convertTimestamp(latestNews[0].datetime)[1]}</p>
           </div>
           <div>
-            <p className="text-sm">{latestNews[0].summary.slice(0, 50)}</p>
-            <a href={latestNews[0].url}>
-              <p>view full story..</p>
+            <p className="text-sm pb-4">{latestNews[0].summary.slice(0, 50)}...</p>
+            <a  href={latestNews[0].url}>
+              <p className="bg-blue-700 rounded-md text-lg shadow-sm text-center py-2">View full story</p>
             </a>
           </div>
           <p></p>
