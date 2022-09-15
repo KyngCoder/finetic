@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import {MdInsertChart,MdQueryStats,MdSettings} from 'react-icons/md'
-import {BsGraphUp} from 'react-icons/bs'
+import {BsGraphUp,BsBookHalf} from 'react-icons/bs'
 import {BiTransfer} from 'react-icons/bi'
-import {RiStockFill,RiCommunityFill,RiWallet2Fill,RiEyeFill,RiMessage2Fill} from 'react-icons/ri'
+import {RiStockFill,RiPieChartFill,RiCommunityFill,RiWallet2Fill,RiEyeFill,RiMessage2Fill} from 'react-icons/ri'
 import logo from '../../public/Finetic (1).png'
 import Image from "next/image";
+import Link from "next/link";
+import { GiDivingDagger } from "react-icons/gi";
 
 
 const Sidebar:FC = () => {
@@ -42,20 +44,21 @@ const Sidebar:FC = () => {
             </a>
           </li>
           <li>
-            <a
-              href="#"
+            <Link href="/News/NewsFeed">
+            <div
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-            <MdInsertChart   className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-              <span className="flex-1 ml-3 whitespace-nowrap">Crypto</span>
-            </a>
+            <BsBookHalf   className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+              <span className="flex-1 ml-3 whitespace-nowrap">NewsFeed</span>
+            </div>
+            </Link>
           </li>
           <li>
             <a
               href="#"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-            <BsGraphUp   className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+            <RiPieChartFill   className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
               <span className="flex-1 ml-3 whitespace-nowrap">(Portfolio)</span>
               
             </a>
@@ -65,12 +68,11 @@ const Sidebar:FC = () => {
               href="#"
               className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
             >
-              <RiStockFill className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-              <span className="flex-1 ml-3 whitespace-nowrap">Stocks(drop down list)</span>
-           
+            <BsGraphUp   className="display flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+              <span className="flex-1 ml-3 whitespace-nowrap">Market</span>
+              
             </a>
           </li>
-        
           <li>
             <a
               href="#"
