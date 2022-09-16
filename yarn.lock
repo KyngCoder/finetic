@@ -727,11 +727,6 @@
     "ansi-styles" "^4.1.0"
     "supports-color" "^7.1.0"
 
-"chart.js@^3.9.1":
-  "integrity" "sha512-Ro2JbLmvg83gXF5F4sniaQ+lTbSv18E+TIf2cOeiH1Iqd2PGFOtem+DUufMZsCJwFE7ywPOpfXFBwRTGq7dh6w=="
-  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-3.9.1.tgz"
-  "version" "3.9.1"
-
 "chokidar@^3.5.3":
   "integrity" "sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw=="
   "resolved" "https://registry.npmjs.org/chokidar/-/chokidar-3.5.3.tgz"
@@ -2637,11 +2632,6 @@
     "shallow-equal" "^1.2.0"
     "theming" "^3.3.0"
     "tiny-warning" "^1.0.2"
-
-"react-stepper-js@^1.0.4":
-  "integrity" "sha512-z9wTayPsx2OmEYoW06fpH8jX9/He22OlnLJDOzIcgx8Xs4Cv9WUQdguZ9zd2akIMMxw1llJmacu1BQIb83psCQ=="
-  "resolved" "https://registry.npmjs.org/react-stepper-js/-/react-stepper-js-1.0.4.tgz"
-  "version" "1.0.4"
 
 "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
