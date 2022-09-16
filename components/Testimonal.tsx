@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import {finetic} from '../public/Finetic (1).png'
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -119,11 +120,12 @@ const Testimonal = () => {
                     </p>
 
                     <div className="flex items-center mt-8 -mx-2">
-                      <img
+                      {/* <Image
                         className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 dark:ring-gray-700"
-                        src={info.profile}
+                        src={finetic}
                         alt=""
-                      />
+                      layout="fill"
+                      /> */}
 
                       <div className="mx-2">
                         <h1 className="font-semibold text-gray-800 dark:text-white">

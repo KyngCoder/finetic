@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import Image from "next/image"
 
 interface Coins {
   id: string;

@@ -1,9 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import Link from "next/link";
-import { GetStaticProps } from "next";
 import axios from "axios";
 import convertTimestamp from "../../helpers//ConvertTime";
-import useSWR from "swr";
+
 
 interface NewsType {
   category: string;
@@ -46,7 +45,7 @@ const NewsFeed: FC = () => {
     <div className="bg-gray-900 text-white h-full ">
       <Link href="/"><h2 className="px-8 pt-4 text-lg cursor-pointer font-bold">Finetic</h2></Link>
       <div>
-        <h1 className="text-center text-green-600 font-bold  text-2xl"> Today's News</h1>
+        <h1 className="text-center text-green-600 font-bold  text-2xl"> Todays News</h1>
       </div>
 
       <div className="flex justify-evenly">
@@ -68,12 +67,11 @@ const NewsFeed: FC = () => {
       </div>
 
       <div className="grid grid-cols-1 place-items-center md:grid-cols-3  lg:grid-cols-5">
-        {data?.slice(0, position).map((info) => {
+        {data?.slice(0, position).map((info:NewsType) => {
           return (
             <a key={info.datetime + info.id} href={info.url} target="_self">
               <div className="m-4 max-w-md cursor-pointer ">
                 <div className="relative">
-                  {" "}
                   <img
                     className="w-full h-full object-cover rounded-xl"
                     src={info.image}

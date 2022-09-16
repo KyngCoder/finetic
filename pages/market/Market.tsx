@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AllCoin from "./AllCoin";
+import Image from "next/image"
 
 //nft-index
 

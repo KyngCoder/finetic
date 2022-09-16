@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { latestNews } from "../../components/data/Data.js";
+import Image from "next/image"
 
 const News = () => {
   const [newsList, setNewsList] = useState([]);
