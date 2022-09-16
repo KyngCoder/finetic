@@ -73,7 +73,7 @@ const Perks = () => {
           <div className="py-8 flex flex-col  justify-center">
             <h2 className="text-4xl px-8 mb-4 font-bold">Crypto Currency </h2>
             <p className="px-8 mb-4 text-lg max-w-lg">
-            Get the chance to invest in stocks that aren't officially part of the market as yet.
+            Get the chance to invest in stocks that are not officially part of the market as yet.
             </p>
             <p className="px-8 cursor-pointer text-green-500">Learn more</p>
           </div>
@@ -89,7 +89,7 @@ const Perks = () => {
           <div className="py-8 flex flex-col  justify-center">
             <h2 className="text-4xl px-8 mb-4 font-bold ">Robo Advisors </h2>
             <p className="px-8 mb-4 text-lg max-w-lg">
-            Robo-advisors can help put your money to work so you don’t have to.
+            Robo-advisors can help put your money to work so you dont have to.
             </p>
             <p className="px-8 cursor-pointer text-green-500">Learn more</p>
           </div>

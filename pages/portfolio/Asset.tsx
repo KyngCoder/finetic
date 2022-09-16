@@ -28,9 +28,9 @@ const Asset: FC = () => {
           <h1 className="text-2xl pl-16">Assets</h1>
         </div>
         {
-          data.map(stock => {
+          data.map((stock:any,id:number) => {
             return(
-              <div className="mx-16 px-4 justify-between rounded-md shadow-md flex bg-black my-2">
+              <div key={id} className="mx-16 px-4 justify-between rounded-md shadow-md flex bg-black my-2">
           <div className="flex items-center">
           {stock.changesPercentage > 0 ? (
                           <ImArrowUpRight className="text-green-600 h-6 w-6" />

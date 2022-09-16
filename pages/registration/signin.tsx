@@ -3,7 +3,8 @@ import {AiFillEye,AiFillEyeInvisible} from 'react-icons/ai'
 import { useRouter } from "next/router";
 import axios from "axios"
 
-const signin:FC = () => {
+const SignIn:FC = () => {
+
   const [email, setEmail] = useState('');
 
   const [password, setPassword] = useState('');
@@ -97,4 +98,4 @@ const signin:FC = () => {
   );
 };
 
-export default signin;
+export default SignIn;

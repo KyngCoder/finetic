@@ -57,7 +57,7 @@ export const Sign5:FC = () => {
         </div>
 
         <div>
-          <label htmlFor="drivers" className="mx-4 text-lg font-medium">Driver's License (back and front)</label>
+          <label htmlFor="drivers" className="mx-4 text-lg font-medium">Drivers License (back and front)</label>
           <div className="shadow-md back mb-2 rounded-md w-4/5 h-1/4 mx-4 flex space-x-2 cursor-pointer text-lg">
           <div className="flex items-center">
               <Image src={driver} />

@@ -17,7 +17,7 @@ const Active = () => {
 
   useEffect(() => {
     setActive(actives);
-  });
+  },[]);
 
   return (
     <section className="bg-gray-900">

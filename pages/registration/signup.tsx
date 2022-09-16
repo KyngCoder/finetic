@@ -9,7 +9,7 @@ import { Sign5 } from "../../components/forms/Sign5";
 import { useAuth } from "../../context/UserData";
 import axios from "axios";
 
-const signup = () => {
+const SignUp = () => {
   const [step, setStep] = useState(0);
 
 
@@ -117,4 +117,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default SignUp;

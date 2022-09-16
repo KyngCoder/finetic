@@ -43,7 +43,7 @@ const Starter = () => {
             <h6 className="mb-2 font-semibold leading-5 text-2xl">Simple</h6>
             <p className="text-sm text-gray-300">
               A flower in my garden, a mystery in my panties. Heart attack never
-              stopped old Big Bear. I didn't even know we were calling him Big
+              stopped old Big Bear. I did not even know we were calling him Big
               Bear.
             </p>
           </div>
