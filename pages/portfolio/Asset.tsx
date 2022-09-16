@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import { ImArrowUpRight, ImArrowDownLeft } from "react-icons/im";
 import {watchList} from '../../components/data/Data'
 
+
 const Asset: FC = () => {
 
   const [data,setData] = useState<any>([])

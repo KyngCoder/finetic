@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Asset from './Asset'
+import {BiArrowBack} from 'react-icons/bi'
+import Link from "next/link";
 
 const Portfolio = () => {
   const [index, setIndex] = useState(2);
@@ -7,6 +9,7 @@ const Portfolio = () => {
   return (
     <div className="flex flex-col text-white">
       <div className="h-1/5 bg-gray-800 flex flex-col items-center">
+        <Link href="/"><BiArrowBack className="absolute left-4 top-2 cursor-pointer text-2xl" /></Link>
         <h1 className="mb-4 text-2xl pt-2 font-extrabold">Portfolio</h1>
 
         <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400 mb-2">
