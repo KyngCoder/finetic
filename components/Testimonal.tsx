@@ -74,7 +74,7 @@ const Testimonal = () => {
     <section className="bg-white back">
       <div className="container px-6 py-10 mx-auto">
         <h1 className="text-3xl font-semibold text-center text-gray-800 capitalize xl:text-5xl lg:text-4xl dark:text-white">
-          What our <span className="text-blue-500 ">clients</span> say's
+          What our <span className="text-blue-500 ">clients</span> says
         </h1>
 
         <p className="max-w-2xl mx-auto my-6 text-center text-gray-500 dark:text-gray-300">
@@ -120,12 +120,11 @@ const Testimonal = () => {
                     </p>
 
                     <div className="flex items-center mt-8 -mx-2">
-                      {/* <Image
+                       <img
                         className="object-cover mx-2 rounded-full w-14 shrink-0 h-14 ring-4 ring-gray-300 dark:ring-gray-700"
                         src={finetic}
                         alt=""
-                      layout="fill"
-                      /> */}
+                      /> 
 
                       <div className="mx-2">
                         <h1 className="font-semibold text-gray-800 dark:text-white">

@@ -23,7 +23,7 @@ const Tab = () => {
 
   <div className="flex flex-col justify-center items-center md:order-2">
       <button   type="button" className="flex mr-3 text-sm  bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-        {/* <Image onClick={() => setState(!state)}  className="w-8 h-8 rounded-full" src="" alt="user photo" /> */}
+         <img onClick={() => setState(!state)}  className="w-8 h-8 rounded-full" src="" alt="user photo" /> 
       </button>
       
       <div className={`${state? 'block' : 'hidden'}  z-50  text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`} id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom">

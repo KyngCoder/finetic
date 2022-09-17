@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
 
-export default async function (req:NextApiRequest, res:NextApiResponse){
+const SignIn  = async(req:NextApiRequest, res:NextApiResponse) => {
     const { method } = req
 
     const KEY = 'hey'
@@ -71,3 +71,5 @@ export default async function (req:NextApiRequest, res:NextApiResponse){
       break
   }
 }
+
+export default SignIn

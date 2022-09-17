@@ -36,7 +36,7 @@ export const Sign5:FC = () => {
           <label htmlFor="passport" className="mx-4 text-lg font-medium">Passport</label>
           <div className="shadow-md back mb-2 rounded-md w-4/5 h-1/4 mx-4 flex space-x-2 cursor-pointer text-lg">
             <div className="flex items-center">
-              <Image src={pass} />
+              <Image src={pass} alt="" />
             </div>
             <div className="flex items-center cursor-pointer">
               <input id="passport" type="file" placeholder="passport" className="rounded-md cursor-pointer" value={imageProof} onChange={handleImage} />
@@ -48,7 +48,7 @@ export const Sign5:FC = () => {
           <label htmlFor="ID" className="mx-4 text-lg font-medium">National ID (back and front)</label>
           <div className="shadow-md back mb-2 rounded-md w-4/5 h-1/4 mx-4 flex space-x-2 cursor-pointer text-lg">
           <div className="flex items-center">
-              <Image src={ID} />
+              <Image src={ID} alt="" />
             </div>
             <div className="flex items-center cursor-pointer">
               <input id="ID" type="file" placeholder="passport" className="rounded-md cursor-pointer"/>
@@ -60,7 +60,7 @@ export const Sign5:FC = () => {
           <label htmlFor="drivers" className="mx-4 text-lg font-medium">Drivers License (back and front)</label>
           <div className="shadow-md back mb-2 rounded-md w-4/5 h-1/4 mx-4 flex space-x-2 cursor-pointer text-lg">
           <div className="flex items-center">
-              <Image src={driver} />
+              <Image src={driver} alt=""/>
             </div>
             <div className="flex items-center cursor-pointer">
               <input id="drivers" type="file" placeholder="passport" className="rounded-md cursor-pointer" onChange={handleImage}/>
@@ -72,7 +72,7 @@ export const Sign5:FC = () => {
           <label htmlFor="later" className="mx-4 text-lg font-medium">Upload later</label>
           <div className="shadow-md back mb-2 rounded-md w-4/5 h-1/4 mx-4 flex space-x-2 cursor-pointer text-lg">
           <div className="flex items-center">
-              <Image src={later} />
+              <Image src={later} alt="" />
             </div>
             <div className="flex items-center cursor-pointer">
              <p>Upload Later</p>

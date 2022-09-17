@@ -41,12 +41,12 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
                     Legal
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -170,12 +170,12 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <a
+                  <Link
                     href="/"
                     className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200"
                   >
                     All-in-one dashboard
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <Link
