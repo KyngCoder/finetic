@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { latestNews } from "../../components/data/Data.js";
+import { latestNews } from "../../components/data/Data";
 import Image from "next/image"
 
 const News = () => {

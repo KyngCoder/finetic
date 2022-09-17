@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Favourites } from "../../components/data/Data.js";
+import { Favourites } from "../../components/data/Data";
 import Carousel from '../../components/Carousel'
 
 const Gainers = () => {
