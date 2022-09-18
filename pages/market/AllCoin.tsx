@@ -2,20 +2,20 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Table from './Table';
 
+type AllCoin =  {
+  id: "",
+  symbol: "",
+  name: "",
+  image: "",
+  current_price: 0,
+  market_cap: 0,
+  price_change_percentage_24h: 0,
+  market_cap_change_24h: 0,
+}[]
+
 const AllCoin = () => {
 
-    const [allCoins, setAllCoins] = useState([
-        {
-          id: "",
-          symbol: "",
-          name: "",
-          image: "",
-          current_price: 0,
-          market_cap: 0,
-          price_change_percentage_24h: 0,
-          market_cap_change_24h: 0,
-        },
-      ]);
+    const [allCoins, setAllCoins] = useState<AllCoin>([]);
     
       const getCoins = async () => {
         const data = await axios.get(
@@ -29,7 +29,7 @@ const AllCoin = () => {
         getCoins();
       }, []);
 
-      console.log(allCoins)
+   
 
   return (
    <Table data={allCoins} />

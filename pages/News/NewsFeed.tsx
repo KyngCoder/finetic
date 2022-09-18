@@ -4,24 +4,22 @@ import axios from "axios";
 import convertTimestamp from "../../helpers//ConvertTime";
 
 
-interface NewsType {
-  category: string;
-  datetime: number;
-  headline: string;
-  id: number;
-  image: string;
-  related?: string;
-  source: string;
-  summary: string;
-  url: string;
-}
 
 
 
 const NewsFeed: FC = () => {
   const [position, setPosition] = useState(15);
   const [category, setCategory] = useState("forex");
-  const [data, setData] = useState<NewsType>([]);
+  const [data, setData] = useState([{
+    category: '',
+    datetime: 0,
+    headline: '',
+    id: 0,
+    image: '',
+    source: '',
+    summary: '',
+    url: '',
+  }]);
 
 
   const getNews = async () => {
