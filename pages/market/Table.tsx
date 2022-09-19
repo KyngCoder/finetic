@@ -1,8 +1,10 @@
 import React, { FC } from "react";
-import Image from "next/image"
+import Image from "next/image";
+import Link from "next/link";
+import { useAuth } from "../../context/UserData";
 
 type CoinsProps = {
-  data:{
+  data: {
     id: string;
     symbol: string;
     name: string;
@@ -11,10 +13,12 @@ type CoinsProps = {
     market_cap: number;
     price_change_percentage_24h: number;
     market_cap_change_24h: number;
-  }[]
-}
+  }[];
+};
 
-const Table:FC<CoinsProps> = ({data}) => {
+const Table: FC<CoinsProps> = ({ data }) => {
+
+  const {crypto,setCrypto} = useAuth()
 
   return (
     <div className="bg-gray-900">
@@ -43,7 +47,7 @@ const Table:FC<CoinsProps> = ({data}) => {
               </th>
             </tr>
           </thead>
-          {data?.map((coin, index:number) => {
+          {data?.map((coin, index: number) => {
             return (
               <tbody key={coin.id}>
                 <tr
@@ -92,17 +96,16 @@ const Table:FC<CoinsProps> = ({data}) => {
                   <td className="py-4 px-6">{coin.market_cap_change_24h}</td>
 
                   <td className="py-4 px-6">
-                    <a
-                      href="#"
-                      className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center"
-                    >
-                      Trade
-                    </a>
+                    <Link href="/details/Details">
+                      <button onClick={()=>setCrypto(coin.name)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                        Trade
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               </tbody>
             );
-          })} 
+          })}
         </table>
       </div>
     </div>

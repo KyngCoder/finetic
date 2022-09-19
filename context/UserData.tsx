@@ -47,6 +47,8 @@ export type userType = {
   setImageProof: (value: SetStateAction<File | undefined> ) => void;
   setAgree: (value: SetStateAction<string>) => void;
   agree: string;
+  crypto:string,
+  setCrypto:(value: SetStateAction<string>) => void;
 };
 
 const authContextDefaultValues: userType = {
@@ -90,6 +92,8 @@ const authContextDefaultValues: userType = {
   setProofType: () => {},
   setAgree: () => {},
   agree: "",
+  crypto:"",
+  setCrypto: () => {},
 };
 
 const AuthContext = createContext<userType>(authContextDefaultValues);
@@ -123,6 +127,7 @@ export function AuthProvider({ children }: Props) {
   const [imageProof, setImageProof] = useState<File>();
   const [residence, setResidence] = useState("");
   const [agree, setAgree] = useState("");
+  const [crypto,setCrypto] = useState('')
 
   const value = {
     firstName,
@@ -165,6 +170,8 @@ export function AuthProvider({ children }: Props) {
     setState,
     setAgree,
     agree,
+    crypto,
+    setCrypto
   };
 
   return (

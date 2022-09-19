@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import AllCoin from './AllCoin';
 import TrendingCoin from './Trending';
+import Watchlist from './Watchlist';
 
 const Crypto = () => {
 
@@ -9,6 +10,7 @@ const Crypto = () => {
     const choose = () => {
        if(index === 1)return <AllCoin />
        else if(index === 2) return <TrendingCoin />
+       else return <Watchlist />
     }
 
   return (
@@ -42,6 +44,19 @@ const Crypto = () => {
                 aria-current="page"
               >
                 Trending
+              </a>
+            </li>
+            <li className="mr-2" onClick={() => setIndex(3)}>
+              <a
+                href="#"
+                className={
+                  index === 3
+                    ? "inline-block py-3 px-4 text-white bg-blue-600 rounded-lg duration-700"
+                    : "inline-block py-3 px-4 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+                }
+                aria-current="page"
+              >
+                Watchlist
               </a>
             </li>
           </ul>

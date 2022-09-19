@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import AllCoin from "./AllCoin";
 import Image from "next/image"
 import TrendingCoin from "./Trending";
-import Popular from "./Popular";
 import Crypto from "./Crypto";
 import Stock from "./Stock";
+import Link from "next/link";
 
 //nft-index
 
@@ -25,15 +25,11 @@ import Stock from "./Stock";
 
 //https://financialmodelingprep.com/api/v3/institutional-holder/AAPL?apikey=YOUR_API_KEY institutional holder
 
-//https://financialmodelingprep.com/api/v3/stock/list?apikey=f777da10da2c1a70cd2f09fc262d7533 stocks available
 
-//https://financialmodelingprep.com/api/v3/available-traded/list?apikey=f777da10da2c1a70cd2f09fc262d7533 tradable stocks
 
-//https://financialmodelingprep.com/api/v3/etf/list?apikey=f777da10da2c1a70cd2f09fc262d7533 etf list
+ 
 
-//https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey=f777da10da2c1a70cd2f09fc262d7533 gainer
 
-//https://financialmodelingprep.com/api/v3/symbol/available-commodities?apikey=f777da10da2c1a70cd2f09fc262d7533 commodities
 
 //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false crypto
 
@@ -60,7 +56,7 @@ interface Coins {
 }
 
 const Market = () => {
-  const [choice, setChoice] = useState(1);
+  const [choice, setChoice] = useState(2);
  
 
  const stockOrCrypto = () => {
@@ -72,7 +68,9 @@ const Market = () => {
     <div className="back h-screen text-white">
       <div className="flex justify-between px-8 py-4">
         <div className="flex space-x-8">
-          <h4>Finetic</h4>
+         <Link href="/">
+         <h4>Finetic</h4>
+         </Link>
           <h2 className="font-medium text-2xl">Market</h2>
         </div>
         <div className="flex">
