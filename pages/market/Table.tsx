@@ -97,7 +97,7 @@ const Table: FC<CoinsProps> = ({ data }) => {
 
                   <td className="py-4 px-6">
                     <Link href="/details/Details">
-                      <button onClick={()=>setCrypto(coin.name)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                      <button onClick={()=>setCrypto(coin.id)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
                         Trade
                       </button>
                     </Link>

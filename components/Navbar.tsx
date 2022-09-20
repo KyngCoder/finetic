@@ -26,7 +26,7 @@ const Navbar = () => {
           onClick={() => setToggleMenu(true)}
         />
       </div>
-  <Link href="/registration/signin">
+  <Link href="/registration/SignUp">
   <button className="absolute top-10 bg-blue-500 py-1 px-4 rounded-full text-lg right-28 lg:right-0">Login</button>
   </Link>
       <div>
