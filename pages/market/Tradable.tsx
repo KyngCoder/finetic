@@ -1,10 +1,12 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
+import Link from 'next/link';
 
+import { useAuth } from "../../context/UserData";
 
 
 const Tradable = () => {
-
+  const {crypto,setCrypto} = useAuth()
     const [tradable, setTradable] = useState([
         {
         symbol:'',
@@ -14,10 +16,10 @@ const Tradable = () => {
         exchangeShortName:'',
         }]);
 
-        const [position, setPosition] = useState(99);
+        const [position, setPosition] = useState(30);
 
         const handleStocks = () => {
-            setPosition((position) => position + 99);
+            setPosition((position) => position + 30);
           };
 
   const getStocks = async () => {
@@ -28,11 +30,11 @@ const Tradable = () => {
     setTradable(data.data.flat());
   };
 
-//   useEffect(() => {
-//     getStocks();
-//   }, []);
+  useEffect(() => {
+    getStocks();
+  }, []);
 
-  console.log(tradable)
+  
 
   return (
     <div className="bg-gray-900">
@@ -91,12 +93,11 @@ const Tradable = () => {
                   </td>
 
                   <td className="py-4 px-6">
-                    <a
-                      href="#"
-                      className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center"
-                    >
-                      Trade
-                    </a>
+                  <Link href="/details/StockDetails">
+                      <button onClick={()=>setCrypto(stock.symbol)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                        Trade
+                      </button>
+                    </Link>
                   </td>
                 </tr>
               </tbody>

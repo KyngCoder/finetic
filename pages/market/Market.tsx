@@ -33,9 +33,7 @@ import Link from "next/link";
 
 //https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false crypto
 
-//https://api.coingecko.com/api/v3/coins/bitcoin crypto details
 
-//https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=14 historical data
 
 // https://api.coingecko.com/api/v3/search?query=ethereum search
 

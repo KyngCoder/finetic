@@ -13,8 +13,8 @@ import {
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import { useAuth } from "../../context/UserData";
-import Image from "next/image";
-import Info from "./Info";
+
+
 
 ChartJS.register(
   CategoryScale,
@@ -27,46 +27,37 @@ ChartJS.register(
 );
 
 type DataType = {
-  image: {
-    large: string;
-  };
-  description: {
-    en: string ;
-  };
-  market_data: {
-    current_price: {
-      usd: number;
-    };
-    market_cap_rank: number;
-    market_cap: {
-      usd: number;
-    };
-  };
-  links: {
-    homepage: string[];
-  };
-};
+    image:string,
+    website:string,
+    companyName:string,
+    mktCap:number,
+    price:number,
+    industry:string,
+    description:string,
+    sector:string,
+}[]
 
-export default function Details() {
-  const [info, setInfo] = useState([]);
+export default function StockDetails() {
+  const [info, setInfo] = useState<any>([]);
   const { crypto } = useAuth();
   const [period, setPeriod] = useState(7);
   const [currency, setCurrency] = useState("usd");
   const [days,setDays] = useState(1)
-  const [data, setData] = useState<DataType>();
+  const [data, setData] = useState<DataType>([]);
+
 
   const getData = async () => {
     const data = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${crypto}?localization=false`
+    `https://financialmodelingprep.com/api/v3/profile/${crypto}?apikey=f777da10da2c1a70cd2f09fc262d7533`
     );
     setData(data.data);
   };
 
   const getInfo = async () => {
     const data = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${crypto.toLowerCase()}/market_chart?vs_currency=${currency}&days=${period}`
+        `https://financialmodelingprep.com/api/v3/historical-price-full/${crypto}?timeseries=${period}&apikey=f777da10da2c1a70cd2f09fc262d7533`
     );
-    setInfo(data.data.prices);
+    setInfo(data.data.historical);
   };
 
   useEffect(() => {
@@ -80,65 +71,73 @@ export default function Details() {
 
 
 
-
+console.log(info)
 
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
-    <div className="lg:flex mb-4">
-      <div className="mt-4 lg:w-1/2 xl:w-1/4 border-4 p-4 mr-2 mb-8 lg:mb-0">
+<div className="lg:flex mb-4">
+
+{
+    data.map(stock => {
+        return(
+            <div className="mt-4 lg:w-1/2 xl:w-1/4 border-4 p-4 mr-2 mb-8 lg:mb-0">
         <div className=" flex flex-col items-center">
-          <img className="" src={data?.image?.large} alt="bitcoin" />
+          <img className="" src={stock.image} alt="bitcoin" />
+          <p className="text-2xl font-medium">{stock.companyName}</p>
         </div>
         <p className="text-lg my-2">
-        {ReactHtmlParser(data?.description?.en.split(". ")[0])}
+        {stock.description.split(". ").slice(0,2).join(' ')}.
         </p>
         <p className="font-bold text-2xl">
-          Rank:{" "}
+          Sector:{" "}
           <span className="font-medium">
-            {data?.market_data.market_cap_rank}
+            {stock?.sector}
+          </span>
+        </p>
+        <p className="font-bold text-2xl">
+          Sector:{" "}
+          <span className="font-medium">
+            {stock?.industry}
           </span>
         </p>
         <p className="font-bold text-2xl">
           Current Price:{" "}
           <span className="font-medium">
-            {data?.market_data?.current_price.usd}
+            {stock?.price}
           </span>
         </p>
         <p className="font-bold text-2xl">
           Market Cap:{" "}
           <span className="font-medium">
-            {data?.market_data.market_cap.usd}
+            {stock?.mktCap}
           </span>
         </p>
 
-        <a href={data?.links?.homepage[0]} target="_blank">
+        <a href={stock?.website} target="_blank">
           {" "}
           <button className="bg-green-500 text-lg px-4 py-2 rounded-md">Read More</button>
         </a>
       </div>
+        )
+    })
+}
 
-      <div className="lg:w-1/2 xl:w-3/4 ">
+      
+<div className="lg:w-1/2 xl:w-3/4 ">
         <div className="flex justify-center text-black space-x-5 mb-2">
-        <button onClick={()=>setPeriod(1)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">1 Days</button>
-          <button onClick={()=>setPeriod(7)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">7 Days</button>
+        <button onClick={()=>setPeriod(7)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">7 Days</button>
           <button onClick={()=>setPeriod(14)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">14 Days</button>
           <button onClick={()=>setPeriod(28)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">28 Days</button>
-          <button onClick={()=>setPeriod('max')} className="bg-yellow-500 font-bold px-4 py-1 text-lg">All Time</button>
+          <button onClick={()=>setPeriod(90)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">90 Days</button>
+          <button onClick={()=>setPeriod(150)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">Max</button>
         </div>
         <Line
           data={{
-            labels: info.map((coin) => {
-              let date = new Date(coin[0]);
-              let time =
-                date.getHours() > 12
-                  ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                  : `${date.getHours()}:${date.getMinutes()} AM`;
-              return days === 1 ? time : date.toLocaleDateString();
-            }),
+            labels: info.map((coin) => coin.label.split(', ')[0]),
 
             datasets: [
               {
-                data: info.map((coin) => coin[1]),
+                data: info.map((coin) => coin.high),
                 label: `${crypto} Price ( Past ${period} Days ) in USD`,
                 borderColor: "#EEBC1D",
               },
@@ -153,12 +152,16 @@ export default function Details() {
           }}
         />
       </div>
-    </div>
+    
+
+</div>
+
     <div className="flex justify-evenly">
       <button className="px-6 font-medium rounded-full bg-green-600 text-2xl py-1">Buy</button>
       <button className="text-2xl py-1 font-medium bg-red-600 px-6 rounded-full">Sell</button>
       <button className=" py-1 text-2xl font-medium bg-blue-600 rounded-full px-4">Add to Watchlist</button>
     </div>
+  
   </div>
   );
 }
