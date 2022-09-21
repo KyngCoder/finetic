@@ -68,9 +68,13 @@ export default function Details() {
   };
 
   useEffect(() => {
-    getInfo();
+    
     getData();
   }, []);
+
+  useEffect(() =>{
+    getInfo();
+  },[period])
 
   console.log(data);
 
@@ -112,6 +116,12 @@ export default function Details() {
         </div>
 
         <div className="lg:w-1/2 xl:w-3/4 ">
+          <div className="flex justify-center text-black space-x-5 mb-2">
+            <button onClick={()=>setPeriod(7)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">7 Days</button>
+            <button onClick={()=>setPeriod(14)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">14 Days</button>
+            <button onClick={()=>setPeriod(28)} className="bg-yellow-500 font-bold px-4 py-1 text-lg">28 Days</button>
+            <button onClick={()=>setPeriod('max')} className="bg-yellow-500 font-bold px-4 py-1 text-lg">All Time</button>
+          </div>
           <Line
             data={{
               labels: info.map((coin) => {
@@ -126,7 +136,7 @@ export default function Details() {
               datasets: [
                 {
                   data: info.map((coin) => coin[1]),
-                  label: `${crypto} Price ( Past 7 Days ) in USD`,
+                  label: `${crypto} Price ( Past ${period} Days ) in USD`,
                   borderColor: "#EEBC1D",
                 },
               ],
@@ -134,14 +144,18 @@ export default function Details() {
             options={{
               elements: {
                 point: {
-                  radius: 1,
+                  radius: 2,
                 },
               },
             }}
           />
         </div>
       </div>
-      <div>buy /sell</div>
+      <div className="flex justify-evenly">
+        <button className="px-6 font-medium rounded-full bg-green-600 text-2xl py-1">Buy</button>
+        <button className="text-2xl py-1 font-medium bg-red-600 px-6 rounded-full">Sell</button>
+        <button className=" py-1 text-2xl font-medium bg-blue-600 rounded-full px-4">Add to Watchlist</button>
+      </div>
     </div>
   );
 }
