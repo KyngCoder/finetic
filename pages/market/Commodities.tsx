@@ -1,5 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useAuth } from "../../context/UserData";
+import Link from 'next/link';
 
 type Comm =  {
   "symbol" : "EDF.PA",
@@ -11,6 +13,7 @@ type Comm =  {
 }[]
 
 const Commodities = () => {
+  const {crypto,setCrypto} = useAuth()
 
   const [comm,setComm] = useState<Comm>([
     {
@@ -30,9 +33,9 @@ const Commodities = () => {
 
   }
 
-  useEffect(() =>{
-// getCommodities()
-  },[])
+//   useEffect(() =>{
+//  getCommodities()
+//   },[])
 
   return (
      <div className="bg-gray-900">
@@ -105,12 +108,11 @@ const Commodities = () => {
                 <td className="py-4 px-6">{coin.marketCap}</td>
 
                 <td className="py-4 px-6">
-                  <a
-                    href="#"
-                    className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center"
-                  >
-                    Trade
-                  </a>
+                <Link href="/details/StockDetails">
+                      <button onClick={()=>setCrypto(stock.symbol)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                        Trade
+                      </button>
+                    </Link>
                 </td>
               </tr>
             </tbody>

@@ -23,10 +23,10 @@ const GainerLoser = () => {
     if(type=== 'losers') setLosers(data.data)
   };
 
-  // useEffect(()=>{
-  //   getMovers('gainers')
-  //   getMovers('losers')
-  // },[])
+  useEffect(()=>{
+    getMovers('gainers')
+    getMovers('losers')
+  },[])
 
   console.log(winners);
 
