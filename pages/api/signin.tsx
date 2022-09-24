@@ -1,9 +1,10 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Conn from '../../lib/connectdb'
-import User from '../../models/User'
+
 const bcrypt = require("bcrypt");
 import jwt from 'jsonwebtoken'
 import validator from 'validator'
+import User from "../../models/User";
 
 const SignIn  = async(req:NextApiRequest, res:NextApiResponse) => {
     const { method } = req

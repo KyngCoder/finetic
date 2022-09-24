@@ -183,6 +183,13 @@
     "minimatch" "^3.1.2"
     "strip-json-comments" "^3.1.1"
 
+"@google-pay/button-react@^3.0.0":
+  "integrity" "sha512-GFRlPrr4rK4iZz1EqsdSDG/gP/UjUAGg+fU3Ar7OacquhCkn2Npr5Bqh7Zyxztx3WzsSYDWA2VPaXIr/JQq0BQ=="
+  "resolved" "https://registry.npmjs.org/@google-pay/button-react/-/button-react-3.0.0.tgz"
+  "version" "3.0.0"
+  dependencies:
+    "@types/googlepay" "^0.6.3"
+
 "@humanwhocodes/config-array@^0.9.2":
   "integrity" "sha512-ObyMyWxZiCu/yTisA7uzx81s40xR2fD5Cg/2Kq7G02ajkNubJf6BopgDTmDyc3U7sXpNKM8cYOw7s7Tyr+DnCw=="
   "resolved" "https://registry.npmjs.org/@humanwhocodes/config-array/-/config-array-0.9.5.tgz"
@@ -322,6 +329,11 @@
   dependencies:
     "domhandler" "^2.4.0"
 
+"@types/googlepay@^0.6.3", "@types/googlepay@^0.6.4":
+  "integrity" "sha512-PTt/UCllzl8z5HmhymPpSj6uENZvVKZvCBYdDVmbBVJnLStitxtWrterAOQZkKGlqVdzxNXYeif5hOAMNMS5mw=="
+  "resolved" "https://registry.npmjs.org/@types/googlepay/-/googlepay-0.6.4.tgz"
+  "version" "0.6.4"
+
 "@types/htmlparser2@*":
   "integrity" "sha512-XA74aD+acytofnZic9n83Rxy/IZ259299bYPx5SEyx7uymPi79lRyKDkhJlsuCaPHB7rEoTEhRN4Vm2G5WmHHg=="
   "resolved" "https://registry.npmjs.org/@types/htmlparser2/-/htmlparser2-3.10.3.tgz"
@@ -386,6 +398,11 @@
   "integrity" "sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew=="
   "resolved" "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   "version" "0.16.2"
+
+"@types/validator@^13.7.6":
+  "integrity" "sha512-uBsnWETsUagQ0n6G2wcXNIufpTNJir0zqzG4p62fhnwzs48d/iuOWEEo0d3iUxN7D+9R/8CSvWGKS+KmaD0mWA=="
+  "resolved" "https://registry.npmjs.org/@types/validator/-/validator-13.7.6.tgz"
+  "version" "13.7.6"
 
 "@types/webidl-conversions@*":
   "integrity" "sha512-XAahCdThVuCFDQLT7R7Pk/vqeObFNL3YqRyFZg+AqAP/W1/w3xHaIxuW7WszQqTbIBOPRcItYJIou3i/mppu3Q=="
