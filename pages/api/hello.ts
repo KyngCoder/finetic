@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { connect } from 'mongoose'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import connectMongo from '../../database/conn.js'
+import connectMongo from '../../database/connectMongo.js/index.js'
 
 type Data = {
   name: string

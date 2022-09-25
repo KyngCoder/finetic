@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import Conn from "../../lib/connectdb";
+import connectMongo from '../../database/connectMongo'
 
 const bcrypt = require("bcrypt");
 import jwt from "jsonwebtoken";
@@ -11,7 +11,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const KEY = "hey";
 
-  await Conn();
+  await connectMongo();
 
   switch (method) {
     case "GET":

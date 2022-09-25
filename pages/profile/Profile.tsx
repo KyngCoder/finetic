@@ -6,16 +6,26 @@ import { ImArrowUpRight, ImArrowDownLeft } from "react-icons/im";
 import axios from "axios";
 import Main from "../profile/Main";
 import Active from "./Active";
+import {useAuth} from '../../context/UserData'
+
 
 const Profile = () => {
-  //const key = 'sandbox_cbasedqad3i91bfqbkfg'
+const {_id,firstName,setId,setFirstName} = useAuth()
+const email = JSON.parse(localStorage.getItem('userInfo'))
+const searchEmail = email.user.email
 
-  // useEffect(()=>{
-  //   const data = axios.get(`https://finnhub.io/api/v1/search?q=apple&token=${key}`)
+  const getUser = async() => {
+   const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
+   const data = u.data.data[0]
+   setId(data._id)
+   setFirstName(data.firstName)
+  }
 
-  //   console.log(data)
+  useEffect(()=>{
+    getUser()
+  },[])
 
-  // },[])
+console.log(firstName,_id)
 
   return (
     <section className="flex w-screen">

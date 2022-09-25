@@ -1,8 +1,6 @@
-
 import { NextApiRequest, NextApiResponse } from "next";
-import { AiOutlineConsoleSql } from "react-icons/ai";
 import connectMongo from '../../database/connectMongo'
-import User from '../../models/User'
+import User from "../../models/User";
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -52,39 +50,25 @@ interface ExtendedNextApiRequest extends NextApiRequest {
     stockWatchList: [
       {
         name: String;
-        symbol: String;
+        Symbol: String;
       }
     ];
     cryptoWatchList: [
       {
         name: String;
-        symbol: String;
+        Symbol: String;
       }
     ];
   };
 }
 
-const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
+const updateCrypto = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
   await connectMongo();
   const { method } = req;
 
-
-
+  let {crypto } = req.body;
+ 
   switch (method) {
-    case "GET":
-      const {email} = req.query
-      console.log(email)
-      try {
-        const user = await User.find({email});
-        res.status(200).json({ data: user });
-      } catch (error) {
-        console.log(error)
-        res.status(404).json({ error});
-      }
-
-      break;
-
-    
 
     case "PUT":
       try {
@@ -93,13 +77,13 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
         const user = await User.find({ _id: req.body._id });
 
         if (
-          user[0].stocks.filter((name) => name.id === req.body.stocks.id)
+          user[0].crypto.filter((name) => name.id === req.body.crypto.id)
             .length === 0
         ) {
           updatedUser = await User.findByIdAndUpdate(
             req.body._id,
             {
-              $push: { stocks: req.body.stocks },
+              $push: { crypto: req.body.crypto },
             },
             { new: true }
           );
@@ -107,14 +91,14 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
         } else {
           await User.findByIdAndUpdate(
             req.body._id,
-            { $pull: { stocks: { id: req.body.stocks.id } } },
+            { $pull: { crypto: { id: req.body.crypto.id } } },
             { new: false }
           );
 
           updatedUser = await User.findByIdAndUpdate(
             req.body._id,
             {
-              $push: { stocks: req.body.stocks },
+              $push: { crypto: req.body.crypto },
             },
             { new: true }
           );
@@ -130,11 +114,10 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
 
       break;
 
-      break;
     default:
       res.status(400).json({ success: false });
       break;
   }
 };
 
-export default getUser;
+export default updateCrypto

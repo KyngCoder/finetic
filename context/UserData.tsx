@@ -7,6 +7,7 @@ import {
 } from "react";
 
 export type userType = {
+  _id:string,
   firstName: string;
   lastName: string;
   country: string;
@@ -49,9 +50,11 @@ export type userType = {
   agree: string;
   crypto:string,
   setCrypto:(value: SetStateAction<string>) => void;
+  setId:(value:SetStateAction<string>) => void;
 };
 
 const authContextDefaultValues: userType = {
+  _id:"",
   firstName: "",
   lastName: "",
   country: "",
@@ -94,6 +97,7 @@ const authContextDefaultValues: userType = {
   agree: "",
   crypto:"",
   setCrypto: () => {},
+  setId:()=>{},
 };
 
 const AuthContext = createContext<userType>(authContextDefaultValues);
@@ -128,6 +132,7 @@ export function AuthProvider({ children }: Props) {
   const [residence, setResidence] = useState("");
   const [agree, setAgree] = useState("");
   const [crypto,setCrypto] = useState('')
+  const [_id,setId] = useState('')
 
   const value = {
     firstName,
@@ -171,7 +176,9 @@ export function AuthProvider({ children }: Props) {
     setAgree,
     agree,
     crypto,
-    setCrypto
+    setCrypto,
+    _id,
+    setId
   };
 
   return (

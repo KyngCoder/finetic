@@ -1,8 +1,6 @@
-
 import { NextApiRequest, NextApiResponse } from "next";
-import { AiOutlineConsoleSql } from "react-icons/ai";
 import connectMongo from '../../database/connectMongo'
-import User from '../../models/User'
+import User from "../../models/User";
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -64,63 +62,53 @@ interface ExtendedNextApiRequest extends NextApiRequest {
   };
 }
 
-const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
+const updateStock = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
   await connectMongo();
   const { method } = req;
 
 
-
   switch (method) {
-    case "GET":
-      const {email} = req.query
-      console.log(email)
-      try {
-        const user = await User.find({email});
-        res.status(200).json({ data: user });
-      } catch (error) {
-        console.log(error)
-        res.status(404).json({ error});
-      }
-
-      break;
-
-    
 
     case "PUT":
       try {
         let updatedUser;
-
+       
+      
         const user = await User.find({ _id: req.body._id });
 
         if (
-          user[0].stocks.filter((name) => name.id === req.body.stocks.id)
-            .length === 0
-        ) {
-          updatedUser = await User.findByIdAndUpdate(
-            req.body._id,
-            {
-              $push: { stocks: req.body.stocks },
-            },
-            { new: true }
-          );
-          
-        } else {
-          await User.findByIdAndUpdate(
-            req.body._id,
-            { $pull: { stocks: { id: req.body.stocks.id } } },
-            { new: false }
-          );
-
-          updatedUser = await User.findByIdAndUpdate(
-            req.body._id,
-            {
-              $push: { stocks: req.body.stocks },
-            },
-            { new: true }
-          );
-          
-
-        }
+            user[0].stockWatchList.filter((name) => name.symbol === req.body.stockWatchList.symbol)
+              .length === 0
+          ) {
+            console.log('clear')
+            updatedUser = await User.findByIdAndUpdate(
+              req.body._id,
+              {
+                $push: { stockWatchList: req.body.stockWatchList },
+              },
+              { new: true }
+            );
+            
+          } else {
+            await User.findByIdAndUpdate(
+              req.body._id,
+              { $pull: { stockWatchList: { symbol: req.body.stockWatchList.symbol } } },
+              { new: false }
+            );
+  
+            updatedUser = await User.findByIdAndUpdate(
+              req.body._id,
+              {
+                $push: { stockWatchList: req.body.stockWatchList },
+              },
+              { new: true }
+            );
+            
+  
+          }
+  
+          return res.status(201).json(updatedUser);
+       
 
         return res.status(201).json(updatedUser);
       } catch (error) {
@@ -130,11 +118,10 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
 
       break;
 
-      break;
     default:
       res.status(400).json({ success: false });
       break;
   }
 };
 
-export default getUser;
+export default updateStock;

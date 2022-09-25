@@ -103,13 +103,13 @@ const UserSchema = new mongoose.Schema<IUsers>(
     stockWatchList:[
       {
         name: String,
-        Symbol:String,
+        symbol:String,
       }
     ],
     cryptoWatchList:[
       {
         name: String,
-        Symbol:String,
+        symbol:String,
       }
     ]
   },

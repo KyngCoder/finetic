@@ -1,8 +1,6 @@
-
 import { NextApiRequest, NextApiResponse } from "next";
-import { AiOutlineConsoleSql } from "react-icons/ai";
 import connectMongo from '../../database/connectMongo'
-import User from '../../models/User'
+import User from "../../models/User";
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   body: {
@@ -65,26 +63,13 @@ interface ExtendedNextApiRequest extends NextApiRequest {
 }
 
 const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
-  await connectMongo();
+  await connectMongo()
+  
   const { method } = req;
 
-
-
+  let { email, stocks } = req.body;
+  console.log(typeof stocks);
   switch (method) {
-    case "GET":
-      const {email} = req.query
-      console.log(email)
-      try {
-        const user = await User.find({email});
-        res.status(200).json({ data: user });
-      } catch (error) {
-        console.log(error)
-        res.status(404).json({ error});
-      }
-
-      break;
-
-    
 
     case "PUT":
       try {
@@ -130,7 +115,6 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
 
       break;
 
-      break;
     default:
       res.status(400).json({ success: false });
       break;
