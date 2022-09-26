@@ -7,39 +7,6 @@ import Crypto from "./Crypto";
 import Stock from "./Stock";
 import Link from "next/link";
 
-//nft-index
-
-//https://financialmodelingprep.com/api/v3/search?query=AA&limit=10&exchange=NASDAQ&apikey=YOUR_API_KEY search
-
-/// https://financialmodelingprep.com/api/v3/stock-screener?marketCapMoreThan=1000000000&betaMoreThan=1&volumeMoreThan=10000&sector=Technology&exchange=NASDAQ&dividendMoreThan=0&limit=100&apikey=f777da10da2c1a70cd2f09fc262d7533 stock screener
-
-// https://financialmodelingprep.com/api/v3/profile/AAPL?apikey=f777da10da2c1a70cd2f09fc262d7533 company details
-
-// https://financialmodelingprep.com/api/v3/sector-performance?apikey=f777da10da2c1a70cd2f09fc262d7533 sector performance
-
-// https://financialmodelingprep.com/api/v3/historical-sectors-performance?limit=50&apikey=f777da10da2c1a70cd2f09fc262d7533 sector historical performance
-
-// https://financialmodelingprep.com/api/v3/stock-price-change/AAPL?apikey=f777da10da2c1a70cd2f09fc262d7533 company price change
-
-// https://financialmodelingprep.com/api/v3/etf-holder/SPY?apikey=f777da10da2c1a70cd2f09fc262d7533
-
-//https://financialmodelingprep.com/api/v3/institutional-holder/AAPL?apikey=YOUR_API_KEY institutional holder
-
-
-
- 
-
-
-
-//https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false crypto
-
-
-
-// https://api.coingecko.com/api/v3/search?query=ethereum search
-
-
-
-//https://api.coingecko.com/api/v3/exchange_rates
 
 
 interface Coins {
@@ -55,7 +22,21 @@ interface Coins {
 
 const Market = () => {
   const [choice, setChoice] = useState(2);
+  const [user,setUser] = useState([])
  
+  const email = JSON.parse(localStorage.getItem('userInfo'))
+const searchEmail = email.user.email
+
+  const getUser = async() => {
+   const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
+   const data = u.data.data[0]
+   setUser(data)
+  }
+
+  useEffect(()=>{
+    getUser()
+  },[])
+
 
  const stockOrCrypto = () => {
   if(choice === 1) return <Stock />
@@ -81,7 +62,7 @@ const Market = () => {
             />
           </div>
           <div className="flex items-center ml-2">
-            <p>Lamoi Lewars</p>
+            <p>{user.firstName} {user.lastName}</p>
           </div>
         </div>
       </div>

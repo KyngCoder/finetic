@@ -68,6 +68,8 @@ const updateCrypto = async (req: ExtendedNextApiRequest, res: NextApiResponse) =
 
   let {crypto } = req.body;
  
+  console.log('cryp',crypto)
+
   switch (method) {
 
     case "PUT":
@@ -105,6 +107,7 @@ const updateCrypto = async (req: ExtendedNextApiRequest, res: NextApiResponse) =
           
 
         }
+        console.log(updatedUser)
 
         return res.status(201).json(updatedUser);
       } catch (error) {

@@ -9,21 +9,22 @@ import Active from "./Active";
 import {useAuth} from '../../context/UserData'
 
 
+
 const Profile = () => {
 const {_id,firstName,setId,setFirstName} = useAuth()
-const email = JSON.parse(localStorage.getItem('userInfo'))
-const searchEmail = email.user.email
+// const email = JSON.parse(localStorage.getItem('userInfo'))
+// const searchEmail = email.user.email
 
-  const getUser = async() => {
-   const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
-   const data = u.data.data[0]
-   setId(data._id)
-   setFirstName(data.firstName)
-  }
+//   const getUser = async() => {
+//    const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
+//    const data = u.data.data[0]
+//    setId(data._id)
+//    setFirstName(data.firstName)
+//   }
 
-  useEffect(()=>{
-    getUser()
-  },[])
+//   useEffect(()=>{
+//     getUser()
+//   },[])
 
 console.log(firstName,_id)
 
