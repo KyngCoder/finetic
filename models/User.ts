@@ -102,12 +102,14 @@ const UserSchema = new mongoose.Schema<IUsers>(
     ],
     stockWatchList:[
       {
+        id: String,
         name: String,
         symbol:String,
       }
     ],
     cryptoWatchList:[
       {
+        id: String,
         name: String,
         symbol:String,
       }

@@ -15,6 +15,7 @@ import { Line } from "react-chartjs-2";
 import { useAuth } from "../../context/UserData";
 import Image from "next/image";
 import Trade from "./Trade";
+import Watch from "./Watch";
 
 ChartJS.register(
   CategoryScale,
@@ -59,7 +60,6 @@ export default function Details() {
   const [days, setDays] = useState(1);
   const [data, setData] = useState<DataType>();
   const [active, setActive] = useState(0);
- 
 
   const getData = async () => {
     const data = await axios.get(
@@ -75,7 +75,6 @@ export default function Details() {
     setInfo(data.data.prices);
   };
 
-
   useEffect(() => {
     getData();
   }, []);
@@ -84,9 +83,11 @@ export default function Details() {
     getInfo();
   }, [period]);
 
-  
-
-
+  const renderCheckOut = () => {
+    if (active === 0) return <Trade data={data} type="buy" />;
+    else if (active === 1) return <Trade data={data} type="sell" />;
+    else return <Watch data={data} />;
+  };
 
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
@@ -187,48 +188,50 @@ export default function Details() {
           />
         </div>
       </div>
-      <div className="flex justify-evenly back w-1/2 pb-4 ">
-        <div className=" py-2">
-          <ul className="flex flex-wrap  mb-4">
-            <li className="mr-2" onClick={() => setActive(0)}>
-              <a
-                href="#"
-                className={
-                  active === 0
-                    ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
-                    : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                }
-              >
-                Buy
-              </a>
-            </li>
-            <li className="mr-2" onClick={() => setActive(1)}>
-              <a
-                href="#"
-                className={
-                  active === 1
-                    ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
-                    : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                }
-                aria-current="page"
-              >
-                Sell
-              </a>
-            </li>
-            <li className="mr-2" onClick={() => setActive(2)}>
-              <a
-                href="#"
-                className={
-                  active === 2
-                    ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
-                    : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-                }
-              >
-                WatchList
-              </a>
-            </li>
-          </ul>
-         <Trade data={data} />
+      <div className="flex justify-center">
+        <div className="flex justify-evenly back w-96 pb-4 ">
+          <div className=" py-2">
+            <ul className="flex flex-wrap  mb-4">
+              <li className="mr-2" onClick={() => setActive(0)}>
+                <a
+                  href="#"
+                  className={
+                    active === 0
+                      ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
+                      : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  }
+                >
+                  Buy
+                </a>
+              </li>
+              <li className="mr-2" onClick={() => setActive(1)}>
+                <a
+                  href="#"
+                  className={
+                    active === 1
+                      ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
+                      : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  }
+                  aria-current="page"
+                >
+                  Sell
+                </a>
+              </li>
+              <li className="mr-2" onClick={() => setActive(2)}>
+                <a
+                  href="#"
+                  className={
+                    active === 2
+                      ? "inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active dark:text-blue-500 dark:border-blue-500"
+                      : "inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                  }
+                >
+                  WatchList
+                </a>
+              </li>
+            </ul>
+            {renderCheckOut()}
+          </div>
         </div>
       </div>
     </div>

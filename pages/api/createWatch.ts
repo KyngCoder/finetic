@@ -49,14 +49,16 @@ interface ExtendedNextApiRequest extends NextApiRequest {
     ];
     stockWatchList: [
       {
-        name: String;
-        symbol: String;
+        id: String,
+        name: String,
+        symbol: String,
       }
     ];
     cryptoWatchList: [
       {
-        name: String;
-        symbol: String;
+        id:String,
+        name: String,
+        symbol: String,
       }
     ];
   };

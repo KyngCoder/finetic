@@ -2,7 +2,7 @@ import axios from 'axios';
 import { userAgent } from 'next/server';
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
-const Trade = ({data}) => {
+const Trade = ({data,type}) => {
 
     const [amount, setAmount] = useState("1");
     const [total, setTotal] = useState<number>(1);
@@ -82,10 +82,10 @@ const Trade = ({data}) => {
     />
 
     <button
-      className="bg-green-700 p-2  rounded-md cursor-pointer outline-none border-none"
+      className={`${type==='buy'? 'bg-green-700': 'bg-red-700'} p-2  rounded-md cursor-pointer outline-none border-none`}
       onClick={updateCrypto}
     >
-      Buy
+      {type==='buy'? 'Buy' : 'Sell'}
     </button>
   </div>
   )
