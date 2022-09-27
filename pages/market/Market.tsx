@@ -27,15 +27,16 @@ const Market = () => {
   const email = JSON.parse(localStorage.getItem('userInfo'))
 const searchEmail = email.user.email
 
-  const getUser = async() => {
-   const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
-   const data = u.data.data[0]
-   setUser(data)
-  }
+ 
 
   useEffect(()=>{
+    const getUser = async() => {
+      const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
+      const data = u.data.data[0]
+      setUser(data)
+     }
     getUser()
-  },[])
+  },[searchEmail])
 
 
  const stockOrCrypto = () => {

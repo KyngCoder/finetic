@@ -22,6 +22,9 @@ const NewsFeed: FC = () => {
   }]);
 
 
+
+  useEffect(() => {
+    
   const getNews = async () => {
     const res = await axios.get(
       `https://finnhub.io/api/v1/news?category=${category}&token=cbasedqad3i91bfqbkf0`
@@ -29,8 +32,6 @@ const NewsFeed: FC = () => {
     const newsData = await res.data;
     setData(newsData)
   };
-
-  useEffect(() => {
     getNews();
   }, [category]);
 

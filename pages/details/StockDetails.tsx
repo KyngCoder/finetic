@@ -46,28 +46,29 @@ export default function StockDetails() {
   const [data, setData] = useState<DataType>([]);
 
 
-  const getData = async () => {
-    const data = await axios.get(
-    `https://financialmodelingprep.com/api/v3/profile/${crypto}?apikey=f777da10da2c1a70cd2f09fc262d7533`
-    );
-    setData(data.data);
-  };
+  
 
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await axios.get(
+      `https://financialmodelingprep.com/api/v3/profile/${crypto}?apikey=f777da10da2c1a70cd2f09fc262d7533`
+      );
+      setData(data.data);
+    };
+    getData();
+  }, [crypto]);
+
+  useEffect(() =>{
+    
   const getInfo = async () => {
     const data = await axios.get(
         `https://financialmodelingprep.com/api/v3/historical-price-full/${crypto}?timeseries=${period}&apikey=f777da10da2c1a70cd2f09fc262d7533`
     );
     setInfo(data.data.historical);
   };
-
-  useEffect(() => {
-    
-    getData();
-  }, []);
-
-  useEffect(() =>{
     getInfo();
-  },[period])
+  },[period,crypto])
 
 
 
@@ -80,7 +81,7 @@ console.log(info)
 {
     data.map(stock => {
         return(
-            <div className="mt-4 lg:w-1/2 xl:w-1/4 border-4 p-4 mr-2 mb-8 lg:mb-0">
+            <div key={stock.companyName} className="mt-4 lg:w-1/2 xl:w-1/4 border-4 p-4 mr-2 mb-8 lg:mb-0">
         <div className=" flex flex-col items-center">
           <img className="" src={stock.image} alt="bitcoin" />
           <p className="text-2xl font-medium">{stock.companyName}</p>
@@ -113,7 +114,7 @@ console.log(info)
           </span>
         </p>
 
-        <a href={stock?.website} target="_blank">
+        <a href={stock?.website} rel="noreferrer" target="_blank">
           {" "}
           <button className="bg-green-500 text-lg px-4 py-2 rounded-md">Read More</button>
         </a>

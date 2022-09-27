@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "../../context/UserData";
@@ -19,6 +19,16 @@ type CoinsProps = {
 const Table: FC<CoinsProps> = ({ data }) => {
 
   const {crypto,setCrypto} = useAuth()
+
+  const setSearchTerm = (coin:string) => {
+    localStorage.setItem('searchTerm',coin)
+  }
+
+  useEffect(()=>{
+    const setSearchTerm = (coin:string) => {
+      localStorage.setItem('searchTerm',coin)
+    }
+  })
 
   return (
     <div className="bg-gray-900">
@@ -97,7 +107,7 @@ const Table: FC<CoinsProps> = ({ data }) => {
 
                   <td className="py-4 px-6">
                     <Link href="/details/Details">
-                      <button onClick={()=>setCrypto(coin.id)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                      <button onClick={()=>setSearchTerm(coin.id)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
                         Trade
                       </button>
                     </Link>

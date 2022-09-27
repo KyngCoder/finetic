@@ -54,34 +54,42 @@ type DataType = {
 
 export default function Details() {
   const [info, setInfo] = useState([]);
-  const { crypto } = useAuth();
+  const [crypto, setCrypto] = useState();
   const [period, setPeriod] = useState(7);
   const [currency, setCurrency] = useState("usd");
   const [days, setDays] = useState(1);
   const [data, setData] = useState<DataType>();
   const [active, setActive] = useState(0);
 
-  const getData = async () => {
-    const data = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${crypto}?localization=false`
-    );
-    setData(data.data);
+  const getSearchTerm = () => {
+    const searchTerm = localStorage.getItem("searchTerm");
+    setCrypto(searchTerm);
   };
 
-  const getInfo = async () => {
-    const data = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${crypto.toLowerCase()}/market_chart?vs_currency=${currency}&days=${period}`
-    );
-    setInfo(data.data.prices);
-  };
+  
+
+  
+  useEffect(() => {
+    getSearchTerm();
+    const getData = async () => {
+      const data = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${crypto}?localization=false`
+      );
+      setData(data.data);
+    };
+    getData()
+  }, [crypto]);
 
   useEffect(() => {
-    getData();
-  }, []);
-
-  useEffect(() => {
+    const getInfo = async () => {
+      const data = await axios.get(
+        `https://api.coingecko.com/api/v3/coins/${crypto?.toLowerCase()}/market_chart?vs_currency=${currency}&days=${period}`
+      );
+      setInfo(data.data.prices);
+    };
+  
     getInfo();
-  }, [period]);
+  }, [period, crypto,currency]);
 
   const renderCheckOut = () => {
     if (active === 0) return <Trade data={data} type="buy" />;
@@ -89,6 +97,7 @@ export default function Details() {
     else return <Watch data={data} />;
   };
 
+  console.log(crypto);
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
       <div className="lg:flex mb-4">
@@ -102,7 +111,7 @@ export default function Details() {
           <p className="font-bold text-2xl">
             Rank:{" "}
             <span className="font-medium">
-              {data?.market_data.market_cap_rank}
+              {data?.market_data?.market_cap_rank}
             </span>
           </p>
           <p className="font-bold text-2xl">
@@ -114,11 +123,11 @@ export default function Details() {
           <p className="font-bold text-2xl">
             Market Cap:{" "}
             <span className="font-medium">
-              {data?.market_data.market_cap.usd}
+              {data?.market_data?.market_cap.usd}
             </span>
           </p>
 
-          <a href={data?.links?.homepage[0]} target="_blank">
+          <a href={data?.links?.homepage[0]} rel="noreferrer" target="_blank">
             {" "}
             <button className="bg-green-500 text-lg px-4 py-2 rounded-md">
               Read More

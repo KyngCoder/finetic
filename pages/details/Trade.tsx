@@ -1,8 +1,10 @@
 import axios from 'axios';
-import { userAgent } from 'next/server';
+
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
 const Trade = ({data,type}) => {
+
+ 
 
     const [amount, setAmount] = useState("1");
     const [total, setTotal] = useState<number>(1);
@@ -10,25 +12,31 @@ const Trade = ({data,type}) => {
 
     const [user, setUser] = useState([]);
 
-    const email = JSON.parse(localStorage.getItem("userInfo"));
-    const searchEmail = email.user.email;
+
+    
+
+
+ 
   
-    const getUser = async () => {
-      const u = await axios.get(
-        `http://localhost:3000/api/getUser?email=${searchEmail}`
-      );
-      const data = u.data.data[0];
-      setUser(data);
-    };
+    
   
     useEffect(() => {
-      getUser();
+      const email = JSON.parse(localStorage.getItem("userInfo"));
+      const searchEmail = email.user.email;
+      const getUser = async ({searchEmail}) => {
+        const u = await axios.get(
+          `http://localhost:3000/api/getUser?email=${searchEmail}`
+        );
+        const data = u.data.data[0];
+        setUser(data);
+      };
+      getUser({searchEmail});
     }, []);
 
     useEffect(() => {
         if (amount === "") setTotal(0);
         else setTotal(data?.market_data?.current_price.usd * parseInt(amount));
-      }, [amount]);
+      }, [amount,data?.market_data?.current_price.usd]);
 
       const updateCrypto = async () => {
         await axios.put("/api/updateCrypto", {
