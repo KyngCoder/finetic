@@ -24,7 +24,7 @@ const Tradable = () => {
 
   const getStocks = async () => {
     const data = await axios.get(
-    "https://financialmodelingprep.com/api/v3/available-traded/list?apikey=f777da10da2c1a70cd2f09fc262d7533"
+    `https://financialmodelingprep.com/api/v3/available-traded/list?apikey=${process.env.NEXT_PUBLIC_FINANCE_SECRET}`
     );
 
     setTradable(data.data.flat());
@@ -34,7 +34,15 @@ const Tradable = () => {
     getStocks();
   }, []);
 
-  
+  const setSearchTerm = (coin:string) => {
+    localStorage.setItem('searchTerm',coin)
+  }
+
+  useEffect(()=>{
+    const setSearchTerm = (coin:string) => {
+      localStorage.setItem('searchTerm',coin)
+    }
+  })
 
   return (
     <div className="bg-gray-900">
@@ -94,7 +102,7 @@ const Tradable = () => {
 
                   <td className="py-4 px-6">
                   <Link href="/details/StockDetails">
-                      <button onClick={()=>setCrypto(stock.symbol)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
+                      <button onClick={()=>setSearchTerm(stock.symbol)} className="font-medium border-4 shadow-md rounded-md border-blue-500 px-2 py-1.5 text-center">
                         Trade
                       </button>
                     </Link>

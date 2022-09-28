@@ -9,6 +9,9 @@ module.exports = {
   images: {
     disableStaticImages: false,
     
+  },
+  env: {
+    BASE_URL: process.env.BASE_URL,
   }
 }
 

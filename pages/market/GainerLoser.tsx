@@ -16,7 +16,7 @@ const GainerLoser = () => {
 
   const getMovers = async (type: string) => {
     const data = await axios.get(
-      `https://financialmodelingprep.com/api/v3/stock_market/${type}?apikey=f777da10da2c1a70cd2f09fc262d7533`
+      `https://financialmodelingprep.com/api/v3/stock_market/${type}?apikey=${process.env.NEXT_PUBLIC_FINANCE_SECRET}`
     );
 
     if(type=== 'gainers') setWinners(data.data)

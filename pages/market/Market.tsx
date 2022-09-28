@@ -24,8 +24,7 @@ const Market = () => {
   const [choice, setChoice] = useState(2);
   const [user,setUser] = useState([])
  
-  const email = JSON.parse(localStorage.getItem('userInfo'))
-const searchEmail = email.user.email
+
 
  
 
@@ -36,7 +35,7 @@ const searchEmail = email.user.email
       setUser(data)
      }
     getUser()
-  },[searchEmail])
+  },[])
 
 
  const stockOrCrypto = () => {
@@ -63,7 +62,7 @@ const searchEmail = email.user.email
             />
           </div>
           <div className="flex items-center ml-2">
-            <p>{user.firstName} {user.lastName}</p>
+            <p>{user?.firstName} {user?.lastName}</p>
           </div>
         </div>
       </div>

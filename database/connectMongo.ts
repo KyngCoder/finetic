@@ -1,7 +1,7 @@
 const { default: mongoose } = require("mongoose")
 
-const MONGO_URI = 'mongodb+srv://kyngcoder:kyngcoder@cluster0.bcm8m.mongodb.net/?retryWrites=true&w=majority'
-
+const MONGO_URI = process.env.MONGO_URI
+console.log(process.env.MONGO_URI)
 const connectMongo = async() => {
     try{
         const {connection} = await mongoose.connect(MONGO_URI)

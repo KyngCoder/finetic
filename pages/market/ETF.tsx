@@ -17,7 +17,7 @@ const ETF = () => {
   }])
 
   const getEtf = async() => {
-    const data = await axios.get('https://financialmodelingprep.com/api/v3/etf/list?apikey=f777da10da2c1a70cd2f09fc262d7533')
+    const data = await axios.get(`https://financialmodelingprep.com/api/v3/etf/list?apikey=${process.env.NEXT_PUBLIC_FINANCE_SECRET}`)
     setETF(data.data)
   }
 

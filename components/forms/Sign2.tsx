@@ -22,7 +22,7 @@ const Sign2: FC = () => {
 
   const fire = (event: SyntheticEvent) => {
     event?.preventDefault();
-    console.log(firstName, lastName, DOB, email, password);
+    
   };
 
   return (

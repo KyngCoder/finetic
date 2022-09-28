@@ -1,31 +1,14 @@
 import React, { useState, useEffect, ChangeEvent, SyntheticEvent } from "react";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import { Line } from "react-chartjs-2";
+
 import { useAuth } from "../../context/UserData";
 import Image from "next/image";
 import Trade from "./Trade";
 import Watch from "./Watch";
+import Graph from "../../helpers/Graph";
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
+
 
 type DataType = {
   id: string;
@@ -55,12 +38,10 @@ type DataType = {
 export default function Details() {
   const [info, setInfo] = useState([]);
   const [crypto, setCrypto] = useState();
-  const [period, setPeriod] = useState(7);
-  const [currency, setCurrency] = useState("usd");
-  const [days, setDays] = useState(1);
   const [data, setData] = useState<DataType>();
   const [active, setActive] = useState(0);
-
+  const [currency, setCurrency] = useState("usd");
+  const [period, setPeriod] = useState(7);
   const getSearchTerm = () => {
     const searchTerm = localStorage.getItem("searchTerm");
     setCrypto(searchTerm);
@@ -136,65 +117,8 @@ export default function Details() {
         </div>
 
         <div className="lg:w-1/2 xl:w-3/4 ">
-          <div className="flex justify-center text-black space-x-5 mb-2">
-            <button
-              onClick={() => setPeriod(1)}
-              className="bg-yellow-500 font-bold px-4 py-1 text-lg"
-            >
-              1 Days
-            </button>
-            <button
-              onClick={() => setPeriod(7)}
-              className="bg-yellow-500 font-bold px-4 py-1 text-lg"
-            >
-              7 Days
-            </button>
-            <button
-              onClick={() => setPeriod(14)}
-              className="bg-yellow-500 font-bold px-4 py-1 text-lg"
-            >
-              14 Days
-            </button>
-            <button
-              onClick={() => setPeriod(28)}
-              className="bg-yellow-500 font-bold px-4 py-1 text-lg"
-            >
-              28 Days
-            </button>
-            <button
-              onClick={() => setPeriod("max")}
-              className="bg-yellow-500 font-bold px-4 py-1 text-lg"
-            >
-              All Time
-            </button>
-          </div>
-          <Line
-            data={{
-              labels: info.map((coin) => {
-                let date = new Date(coin[0]);
-                let time =
-                  date.getHours() > 12
-                    ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-                    : `${date.getHours()}:${date.getMinutes()} AM`;
-                return days === 1 ? time : date.toLocaleDateString();
-              }),
-
-              datasets: [
-                {
-                  data: info.map((coin) => coin[1]),
-                  label: `${crypto} Price ( Past ${period} Days ) in USD`,
-                  borderColor: "#EEBC1D",
-                },
-              ],
-            }}
-            options={{
-              elements: {
-                point: {
-                  radius: 2,
-                },
-              },
-            }}
-          />
+          
+          <Graph data={info} period={period} setPeriod={setPeriod} crypto={crypto} />
         </div>
       </div>
       <div className="flex justify-center">

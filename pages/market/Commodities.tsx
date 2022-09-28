@@ -27,7 +27,7 @@ const Commodities = () => {
   ])
 
   const getCommodities = async() => {
-    const data = await  axios.get('https://financialmodelingprep.com/api/v3/quotes/commodity?apikey=f777da10da2c1a70cd2f09fc262d7533')
+    const data = await  axios.get(`https://financialmodelingprep.com/api/v3/quotes/commodity?apikey=${process.env.NEXT_PUBLIC_FINANCE_SECRET}`)
 
     setComm(data.data)
 
