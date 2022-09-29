@@ -1,5 +1,6 @@
 import React from "react";
-import { LineGraph } from "../../components/graphs/LineGraph";
+import LineGraph from "../../components/graphs/LineGraph";
+
 import Gainers from "./Gainers";
 import MyStock from "./MyStock";
 import News from "./News";

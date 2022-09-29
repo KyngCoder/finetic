@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Testimonal.js", "components/Footer.tsx", "components/forms/Sign1.tsx", "components/graphs/LineGraph.js", "pages/forecast/Forecast.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/Testimonal.js", "components/Footer.tsx", "components/forms/Sign1.tsx", "components/graphs/LineGraph.tsx", "pages/forecast/Forecast.js"],
   "exclude": ["node_modules"]
 }

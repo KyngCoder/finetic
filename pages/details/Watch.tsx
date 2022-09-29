@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { userAgent } from 'next/server';
+
 import React, { ChangeEvent, useEffect, useState } from 'react'
 
-const Watch = ({data}) => {
+const Watch = ({data,type}) => {
 
 
     
@@ -39,11 +39,23 @@ const Watch = ({data}) => {
         });
       };
 
+      const updateStock = async () => {
+        await axios.put("/api/updateStock", {
+          _id: user._id,
+          stockWatchList: {
+            symbol: data[0].symbol,
+            name: data[0].name,
+          },
+        });
+      };
+
   return (
     <div className=" flex flex-col  ">
     <button
       className="bg-yellow-500 text-black text-lg font-bold p-2  rounded-md cursor-pointer outline-none border-none"
-      onClick={updateCrypto}
+      onClick={
+        type === 'cryptoWatchList ===' ? updateCrypto : updateStock
+      }
     >
       Add to WatchList
     </button>

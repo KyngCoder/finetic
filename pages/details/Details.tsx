@@ -8,8 +8,6 @@ import Trade from "./Trade";
 import Watch from "./Watch";
 import Graph from "../../helpers/Graph";
 
-
-
 type DataType = {
   id: string;
   symbol: string;
@@ -47,9 +45,6 @@ export default function Details() {
     setCrypto(searchTerm);
   };
 
-  
-
-  
   useEffect(() => {
     getSearchTerm();
     const getData = async () => {
@@ -58,7 +53,7 @@ export default function Details() {
       );
       setData(data.data);
     };
-    getData()
+    getData();
   }, [crypto]);
 
   useEffect(() => {
@@ -68,14 +63,16 @@ export default function Details() {
       );
       setInfo(data.data.prices);
     };
-  
+
     getInfo();
-  }, [period, crypto,currency]);
+  }, [period, crypto, currency]);
 
   const renderCheckOut = () => {
-    if (active === 0) return <Trade data={data} type="buy" />;
-    else if (active === 1) return <Trade data={data} type="sell" />;
-    else return <Watch data={data} />;
+    if (active === 0)
+      return <Trade data={data} type="buy" type="cryptoWatchList" />;
+    else if (active === 1)
+      return <Trade data={data} type="sell" type="cryptoWatchList" />;
+    else return <Watch data={data} type="cryptoWatchList" />;
   };
 
   console.log(crypto);
@@ -117,8 +114,12 @@ export default function Details() {
         </div>
 
         <div className="lg:w-1/2 xl:w-3/4 ">
-          
-          <Graph data={info} period={period} setPeriod={setPeriod} crypto={crypto} />
+          <Graph
+            data={info}
+            period={period}
+            setPeriod={setPeriod}
+            crypto={crypto}
+          />
         </div>
       </div>
       <div className="flex justify-center">
