@@ -78,7 +78,7 @@ const getUser = async (req: ExtendedNextApiRequest, res: NextApiResponse) => {
         const user = await User.find({ _id: req.body._id });
 
         if (
-          user[0].stocks.filter((name) => name.id === req.body.stocks.id)
+          user[0].stocks.filter((name) => name.name === req.body.stocks.name)
             .length === 0
         ) {
           updatedUser = await User.findByIdAndUpdate(

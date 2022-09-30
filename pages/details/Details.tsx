@@ -69,9 +69,9 @@ export default function Details() {
 
   const renderCheckOut = () => {
     if (active === 0)
-      return <Trade data={data} type="buy" type="cryptoWatchList" />;
+      return <Trade data={data} category="buy" type="cryptoWatchList" />;
     else if (active === 1)
-      return <Trade data={data} type="sell" type="cryptoWatchList" />;
+      return <Trade data={data} category="sell" type="cryptoWatchList" />;
     else return <Watch data={data} type="cryptoWatchList" />;
   };
 

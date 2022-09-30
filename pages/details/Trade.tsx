@@ -2,15 +2,18 @@ import axios from "axios";
 
 import React, { ChangeEvent, useEffect, useState } from "react";
 
-const Trade = ({ data, type }) => {
+const Trade = ({ data, type, category }) => {
   const [amount, setAmount] = useState("1");
   const [total, setTotal] = useState<number>(1);
+  const [price,setPrice] = useState(0)
 
   const [user, setUser] = useState([]);
 
   useEffect(() => {
     const email = JSON.parse(localStorage.getItem("userInfo"));
     const searchEmail = email.user.email;
+  
+
     const getUser = async ({ searchEmail }) => {
       const u = await axios.get(
         `http://localhost:3000/api/getUser?email=${searchEmail}`
@@ -22,9 +25,11 @@ const Trade = ({ data, type }) => {
   }, []);
 
   useEffect(() => {
+      // setting price based of if the data is for stock/crypto
+      setPrice(type === 'stockWatchList'? `${data[0]?.price}` : `${data?.market_data?.current_price.usd}`)
     if (amount === "") setTotal(0);
-    else setTotal(data[0]?.price * parseInt(amount));
-  }, [amount, data[0]?.price]);
+    else setTotal(price * parseInt(amount));
+  }, [amount,price,data,type]);
 
   const updateCrypto = async () => {
     await axios.put("/api/updateCrypto", {
@@ -49,7 +54,7 @@ const Trade = ({ data, type }) => {
       stocks: {
         id: data[0]?.id,
         symbol: data[0]?.symbol,
-        name: data[0]?.name,
+        name: data[0]?.companyName,
         current_price: data[0]?.price,
         amount: amount,
         total: total,
@@ -84,7 +89,7 @@ const Trade = ({ data, type }) => {
         type="text"
         className="mb-2 border-2 outline-none rounded-md border-blue-500 bg-gray-900 p-2"
         disabled={true}
-        value={`$${data[0]?.price}  USD`}
+        value={price} 
         placeholder="price"
       />
 
@@ -96,11 +101,11 @@ const Trade = ({ data, type }) => {
 
       <button
         className={`${
-          type === "buy" ? "bg-green-700" : "bg-red-700"
+          category === "buy" ? "bg-green-700" : "bg-red-700"
         } p-2  rounded-md cursor-pointer outline-none border-none`}
         onClick={type === "cryptoWatchList" ? updateCrypto : updateStock}
       >
-        {type === "buy" ? "Buy" : "Sell"}
+        {category === "buy" ? "Buy" : "Sell"}
       </button>
     </div>
   );

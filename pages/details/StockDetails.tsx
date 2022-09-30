@@ -73,16 +73,16 @@ export default function StockDetails() {
 
   const renderCheckOut = () => {
     if (active === 0)
-      return <Trade data={data} type="buy" type="stockWatchList" />;
+      return <Trade data={data} category="buy" type="stockWatchList" />;
     else if (active === 1)
-      return <Trade data={data} type="sell" type="stockWatchList" />;
+      return <Trade data={data} category="sell" type="stockWatchList" />;
     else return <Watch data={data} type="stockWatchList" />;
   };
 
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
       <div className="lg:flex mb-4">
-        {data.map((stock) => {
+        {data?.map((stock) => {
           return (
             <div
               key={stock.companyName}
@@ -154,11 +154,11 @@ export default function StockDetails() {
           </div>
           <Line
             data={{
-              labels: info.map((coin) => coin.label.split(", ")[0]),
+              labels: info?.map((coin) => coin.label.split(", ")[0]),
 
               datasets: [
                 {
-                  data: info.map((coin) => coin.high),
+                  data: info?.map((coin) => coin.high),
                   label: `${crypto} Price ( Past ${period} Days ) in USD`,
                   borderColor: "#EEBC1D",
                 },

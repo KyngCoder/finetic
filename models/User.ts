@@ -80,7 +80,7 @@ const UserSchema = new mongoose.Schema<IUsers>(
         id:String,
         symbol: String,
         name: String,
-        price: Number,
+        current_price: Number,
         amount: Number,
         total: Number,
         profit: Number,
