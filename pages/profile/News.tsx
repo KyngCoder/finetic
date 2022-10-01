@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { latestNews } from "../../components/data/Data";
+
 import Image from "next/image"
+import axios from "axios";
 
 const News = () => {
   const [newsList, setNewsList] = useState([]);
 
+  const getNews = async() => {
+    const news = await axios.get(`https://finnhub.io/api/v1/news?category=general&token=${process.env.NEXT_PUBLIC_FINHUB_SECRET}`)
+    console.log(news)
+    setNewsList(news.data[Math.floor(Math.random()*5)])
+  }
+
   useEffect(() => {
-    setNewsList(latestNews);
+    getNews()
   }, []);
 
   console.log(newsList);
@@ -44,22 +51,22 @@ const News = () => {
       <div>
         <div className="flex justify-between text-2xl pb-4">
           <h1>News</h1>
-          <p>{convertTimestamp(latestNews[0].datetime)[0]}</p>
+          <p>{convertTimestamp(newsList?.datetime)[0]}</p>
         </div>
-        <p className="text-lg font-bold font">{latestNews[0].headline}</p>
+        <p className="text-lg font-bold font">{newsList?.headline}</p>
       </div>
       <div className="flex pt-4 ">
         <div className="w-full mr-4 ">
-          <img src={latestNews[0].image} alt="pic of news" />
+          <img src={newsList?.image} alt="pic of news" />
         </div>
         <div>
           <div className="flex space-x-2 text-sm">
-            <p>{latestNews[0].source}</p>
-            <p className="pb-4">{convertTimestamp(latestNews[0].datetime)[1]}</p>
+            <p>{newsList?.source}</p>
+            <p className="pb-4">{convertTimestamp(newsList?.datetime)[1]}</p>
           </div>
           <div>
-            <p className="text-sm pb-4">{latestNews[0].summary.slice(0, 50)}...</p>
-            <a  href={latestNews[0].url}>
+            <p className="text-sm pb-4">{newsList?.summary?.slice(0, 50)}...</p>
+            <a  href={newsList?.url}>
               <p className="bg-blue-700 rounded-md text-lg shadow-sm text-center py-2">View full story</p>
             </a>
           </div>
