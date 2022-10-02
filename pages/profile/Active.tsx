@@ -11,12 +11,26 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
+import axios from "axios";
+
+type Active = {
+  "symbol": string,
+    "name": string,
+    "change": number,
+    "price": number,
+    "changesPercentage": number
+}[]
 
 const Active = () => {
-  const [active, setActive] = useState<any>([]);
+  const [active, setActive] = useState<Active>([]);
+
+  const getActives = async() => {
+    const actives = await axios.get(`https://financialmodelingprep.com/api/v3/stock_market/actives?apikey=${process.env.NEXT_PUBLIC_FINANCE_SECRET}`)
+    setActive(actives.data);
+  }
 
   useEffect(() => {
-    setActive(actives);
+   getActives()
   },[]);
 
   return (
@@ -50,7 +64,7 @@ const Active = () => {
           }}
         >
           <section className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3">
-            {active?.map((stock: any, id: any) => {
+            {active?.map((stock, id: number) => {
               return (
                 <SwiperSlide key={`${stock}${id}`}>
                   <div className="p-8 border bg-white rounded-lg dark:border-gray-700">

@@ -12,8 +12,11 @@ import "swiper/css/navigation";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper";
 
-const Active:FC<any> = ({data,num1,num2,num3}) => {
- 
+import {Asset} from '../helpers/Types'
+
+const Active:FC = ({data,num1,num2,num3}:{data:Asset, num1:number, num2:number, num3:number}) => {
+
+  console.log(data)
 
   return (
     <section className="bg-gray-900">
@@ -45,26 +48,26 @@ const Active:FC<any> = ({data,num1,num2,num3}) => {
           }}
         >
           <section className="grid grid-cols-1 gap-4 mt-8 xl:mt-12 lg:grid-cols-2 xl:grid-cols-3">
-            {data?.map((stock: any, id: any) => {
+            {data?.map((stock, id: number) => {
               return (
                 <SwiperSlide key={`${stock}${id}`}>
                   <div className="p-8 border bg-white rounded-lg dark:border-gray-700">
                     <div className="flex justify-between items-center px-2">
                       <p className="bg-black text-white rounded-full px-2">
-                        {stock.name.slice(0,15)}
+                        {stock?.name?.slice(0,15)}
                       </p>
                       <div className="text-black pt-2">
                         <p>{stock.symbol}</p>
-                        <p>{stock.changesPercentage}</p>
+              
                       </div>
                     </div>
                     <div className="text-black flex pt-4 justify-between items-center px-2">
                       <div>
-                        <p>Portfolio</p>
-                        <p>{stock.price}</p>
+                        <p>Price</p>
+                        <p>{stock?.price}</p>
                       </div>
                       <div>
-                        {stock.changesPercentage > 0 ? (
+                        {stock?.profitPercentage > 0 ? (
                           <ImArrowUpRight className="text-green-600 h-6 w-6" />
                         ) : (
                           <ImArrowDownLeft className="text-red-600 h-6 w-6" />

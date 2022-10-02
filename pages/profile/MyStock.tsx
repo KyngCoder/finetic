@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import { myStocks } from '../../components/data/Data'
+import { UserProps } from "../../helpers/Types";
 import Carousel from '../../components/Carousel'
 
-const MyStock = () => {
-    const [myStock,setMyStock] = useState<any>([])
+const MyStock = ({user}:UserProps) => {
+  
+  
 
-    useEffect(() =>{
-setMyStock(myStocks)
-    },[])
   return (
     <div>
         <div>
             <h1 className="text-center text-2xl">My Stocks</h1>
         </div>
-        <Carousel data={myStock} num1={1} num2={2} num3={3} />
+        <Carousel data={user[0]?.stocks} num1={1} num2={2} num3={3} />
     </div>
   )
 }

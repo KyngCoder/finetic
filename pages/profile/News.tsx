@@ -8,7 +8,6 @@ const News = () => {
 
   const getNews = async() => {
     const news = await axios.get(`https://finnhub.io/api/v1/news?category=general&token=${process.env.NEXT_PUBLIC_FINHUB_SECRET}`)
-    console.log(news)
     setNewsList(news.data[Math.floor(Math.random()*5)])
   }
 
@@ -16,7 +15,7 @@ const News = () => {
     getNews()
   }, []);
 
-  console.log(newsList);
+
 
   function convertTimestamp(timestamp) {
     var d = new Date(timestamp * 1000), // Convert the passed timestamp to milliseconds
