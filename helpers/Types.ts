@@ -117,7 +117,7 @@ export type UserProps = {
 }
 
 export type Asset =  {
-    data:{id: String;
+    id: String;
     symbol: String;
     name: String;
     price: Number;
@@ -125,5 +125,4 @@ export type Asset =  {
     total: Number;
     profit: Number;
     profitPercentage: Number;
-  }[]
-}
+}[]

@@ -16,7 +16,7 @@ import {Asset} from '../helpers/Types'
 
 const Active:FC = ({data,num1,num2,num3}:{data:Asset, num1:number, num2:number, num3:number}) => {
 
-  console.log(data)
+  
 
   return (
     <section className="bg-gray-900">
