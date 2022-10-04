@@ -1,128 +1,133 @@
 export type User = {
-    _id: String;
-    firstName: String;
-    lastName: String;
-    email: string;
-    password: string;
-    country: String;
-    DOB: String;
-    addressLineOne: String;
-    addressLineTwo: String;
-    city: String;
-    zipCode: Number;
-    state: String;
-    telephone: number;
-    employmentStatus: String;
-    sourceOfFunds: String;
-    annualIncome: String;
-    imageProof: String;
-    funds: Number;
+    _id: string
+    firstName: string
+    lastName: string
+    email: string
+    password: string
+    country: string
+    DOB: string
+    addressLineOne: string
+    addressLineTwo: string
+    city: string
+    zipCode: number
+    state: string
+    telephone: number
+    employmentStatus: string
+    sourceOfFunds: string
+    annualIncome: string
+    imageProof: string
+    funds: number
     stocks: [
       {
-        id: String;
-        symbol: String;
-        name: String;
-        price: Number;
-        amount: Number;
-        total: Number;
-        profit: Number;
-        profitPercentage: Number;
+        id: string
+        symbol: string
+        name: string
+        price: number
+        amount: number
+        total: number
+        profit: number
+        profitPercentage: number
       }
-    ];
+    ]
     crypto: [
       {
-        id: String;
-        symbol: String;
-        name: String;
-        image: String;
-        current_price: String;
-        amount: Number;
-        total: Number;
-        profit: Number;
-        profitPercentage: Number;
+        id: string
+        symbol: string
+        name: string
+        image: string
+        current_price: string
+        amount: number
+        total: number
+        profit: number
+        profitPercentage: number
       }
-    ];
+    ]
     stockWatchList: [
       {
-        name: String;
-        symbol: String;
+        name: string
+        symbol: string
       }
-    ];
+    ]
     cryptoWatchList: [
       {
-        name: String;
-        symbol: String;
+        name: string
+        symbol: string
       }
-    ];
+    ]
 }[]
   
 export type UserProps = {
     user:{
-        _id: String;
-        firstName: String;
-        lastName: String;
-        email: string;
-        password: string;
-        country: String;
-        DOB: String;
-        addressLineOne: String;
-        addressLineTwo: String;
-        city: String;
-        zipCode: Number;
-        state: String;
-        telephone: number;
-        employmentStatus: String;
-        sourceOfFunds: String;
-        annualIncome: String;
-        imageProof: String;
-        funds: Number;
+        _id: string
+        firstName: string
+        lastName: string
+        email: string
+        password: string
+        country: string
+        DOB: string
+        addressLineOne: string
+        addressLineTwo: string
+        city: string
+        zipCode: number
+        state: string
+        telephone: number
+        employmentStatus: string
+        sourceOfFunds: string
+        annualIncome: string
+        imageProof: string
+        funds: number
         stocks: [
           {
-            id: String;
-            symbol: String;
-            name: String;
-            price: Number;
-            amount: Number;
-            total: Number;
-            profit: Number;
-            profitPercentage: Number;
+            id: string
+            symbol: string
+            name: string
+            price: number
+            amount: number
+            total: number
+            profit: number
+            profitPercentage: number
           }
-        ];
+        ]
         crypto: [
           {
-            id: String;
-            symbol: String;
-            name: String;
-            image: String;
-            current_price: String;
-            amount: Number;
-            total: Number;
-            profit: Number;
-            profitPercentage: Number;
+            id: string
+            symbol: string
+            name: string
+            image: string
+            current_price: string
+            amount: number
+            total: number
+            profit: number
+            profitPercentage: number
           }
-        ];
+        ]
         stockWatchList: [
           {
-            name: String;
-            symbol: String;
+            name: string
+            symbol: string
           }
-        ];
+        ]
         cryptoWatchList: [
           {
-            name: String;
-            symbol: String;
+            name: string
+            symbol: string
           }
-        ];
+        ]
     }[]
 }
 
 export type Asset =  {
-    id: String;
-    symbol: String;
-    name: String;
-    price: Number;
-    amount: Number;
-    total: Number;
-    profit: Number;
-    profitPercentage: Number;
+    id: string
+    symbol: string
+    name: string
+    price: number
+    amount: number
+    total: number
+    profit: number
+    profitPercentage: number
+}[]
+
+export type Graph = {
+  label:string
+  high: number
 }[]

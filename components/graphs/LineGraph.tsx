@@ -12,7 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
-import { useAuth } from "../../context/UserData";
+import { Graph } from "../../helpers/Types";
 
 ChartJS.register(
   CategoryScale,
@@ -25,11 +25,10 @@ ChartJS.register(
 );
 
 export default function LineGraph() {
-  const [info, setInfo] = useState<any>([]);
+  const [info, setInfo] = useState<Graph>([]);
   const [crypto, setCrypto] = useState("SPY");
   const [period, setPeriod] = useState(28);
-  const [currency, setCurrency] = useState("usd");
-  const [days, setDays] = useState(1);
+  
 
   useEffect(() => {
     const getInfo = async () => {
@@ -40,6 +39,8 @@ export default function LineGraph() {
     };
     getInfo();
   }, [period, crypto]);
+
+  console.log(info)
 
   return (
     

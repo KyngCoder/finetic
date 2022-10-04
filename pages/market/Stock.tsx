@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { ChangeEvent, useEffect, useState } from 'react'
 import Commodities from './Commodities';
 import ETF from './ETF';
 import GainerLoser from './GainerLoser';
@@ -8,6 +9,21 @@ import Tradable from './Tradable';
 const Stock = () => {
 
     const [index, setIndex] = useState(1);
+    const [searchTerm,setSearchTerm] = useState("bitcoin")
+    const [searchData,setSearchData] = useState([])
+
+    
+
+    useEffect(()=>{
+      const getSearchTerm = async() => {
+        console.log(searchTerm)
+        const data = await axios.get( `https://api.coingecko.com/api/v3/coins/${searchTerm}?localization=false`) 
+        console.log(data)
+      }
+      getSearchTerm()
+    },[searchTerm])
+
+    console.log('searchterml', searchTerm)
 
     const choose = () => {
       if(index === 1)return <Tradable />
@@ -104,6 +120,8 @@ const Stock = () => {
                 id="default-search"
                 className="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search a coin"
+                value={searchTerm}
+                onChange={(e:ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               />
             </div>
           </form>

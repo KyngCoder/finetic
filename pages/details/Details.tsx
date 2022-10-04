@@ -2,8 +2,8 @@ import React, { useState, useEffect, ChangeEvent, SyntheticEvent } from "react";
 import axios from "axios";
 import ReactHtmlParser from "react-html-parser";
 
-import { useAuth } from "../../context/UserData";
-import Image from "next/image";
+
+
 import Trade from "./Trade";
 import Watch from "./Watch";
 import Graph from "../../helpers/Graph";
@@ -75,7 +75,7 @@ export default function Details() {
     else return <Watch data={data} type="cryptoWatchList" />;
   };
 
-  console.log(crypto);
+
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
       <div className="lg:flex mb-4">
