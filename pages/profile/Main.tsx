@@ -23,7 +23,7 @@ const Main: FC = () => {
 
   useEffect(() => {
     const email= JSON.parse(localStorage.getItem("userInfo") || "{}");
-    const searchEmail = email.user.email;
+    const searchEmail = email?.result?.email;
     getUser(searchEmail);
   }, []);
 

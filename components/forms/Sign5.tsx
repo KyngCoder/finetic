@@ -1,25 +1,26 @@
 import Image from "next/image";
-import React, { ChangeEvent, FC, SyntheticEvent } from "react";
+import React, { ChangeEvent, FC, SyntheticEvent, useEffect, useState } from "react";
 import ID from "../../public/ID.png";
 import pass from "../../public/pass.png";
 import driver from "../../public/driver.png";
 import later from "../../public/later.png";
 import { useAuth } from "../../context/UserData";
+import ImageUploading from "react-images-uploading";
 
 export const Sign5:FC = () => {
 
+ 
+  const maxNumber = 69;
+ 
   const {imageProof,setImageProof} = useAuth()
 
-  const handleImage = (e:ChangeEvent<HTMLInputElement>) => {
-    alert()
-   const file = e.target.files 
-   if(file){
-    setImageProof(file[0])
-   }else{
-    setImageProof(undefined)
-   }
-   console.log(file,'file')
-  }
+  const onChange = (imageList:any, addUpdateIndex:any) => {
+    // data for submit
+    console.log(imageList, addUpdateIndex);
+    setImageProof(imageList);
+  };
+
+ console.log(imageProof)
 
   return (
     <section className="p-8 text-white">
@@ -39,7 +40,7 @@ export const Sign5:FC = () => {
               <Image src={pass} alt="" />
             </div>
             <div className="flex items-center cursor-pointer">
-              <input id="passport" type="file" placeholder="passport" className="rounded-md cursor-pointer" value={imageProof} onChange={handleImage} />
+              
             </div>
           </div>
         </div>
@@ -51,7 +52,46 @@ export const Sign5:FC = () => {
               <Image src={ID} alt="" />
             </div>
             <div className="flex items-center cursor-pointer">
-              <input id="ID" type="file" placeholder="passport" className="rounded-md cursor-pointer"/>
+            <ImageUploading
+        multiple={false}
+        value={imageProof}
+        onChange={onChange}
+        maxNumber={maxNumber}
+        dataURLKey="data_url"
+        acceptType={["jpg","png"]}
+      >
+        {({
+          imageList,
+          onImageUpload,
+          onImageRemoveAll,
+          onImageUpdate,
+          onImageRemove,
+          isDragging,
+          dragProps
+        }) => (
+          // write your building UI
+          <div className="upload__image-wrapper">
+            <button
+              style={isDragging ? { color: "red" } : null}
+              onClick={onImageUpload}
+              {...dragProps}
+            >
+              Click or Drop here
+            </button>
+            &nbsp;
+            <button className="ml-2" onClick={onImageRemoveAll}>Remove all images</button>
+            {imageList.map((image, index) => (
+              <div key={index} className="image-item">
+                <img src={image.data_url} alt="" width="100" />
+                <div className="image-item__btn-wrapper">
+                  <button onClick={() => onImageUpdate(index)}>Update</button>
+                  <button onClick={() => onImageRemove(index)}>Remove</button>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </ImageUploading>
             </div>
           </div>
         </div>
@@ -63,7 +103,7 @@ export const Sign5:FC = () => {
               <Image src={driver} alt=""/>
             </div>
             <div className="flex items-center cursor-pointer">
-              <input id="drivers" type="file" placeholder="passport" className="rounded-md cursor-pointer" onChange={handleImage}/>
+       
             </div>
           </div>
         </div>

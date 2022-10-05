@@ -73,7 +73,7 @@ const authContextDefaultValues: userType = {
   sourceOfFunds: "",
   annualIncome: "",
   proofType: "",
-  imageProof: "",
+  imageProof: [""],
   setFirstName: () => {},
   setLastName: () => {},
   setCountry: () => {},
@@ -128,7 +128,7 @@ export function AuthProvider({ children }: Props) {
   const [sourceOfFunds, setSourceOfFunds] = useState("");
   const [annualIncome, setAnnualIncome] = useState("");
   const [proofType, setProofType] = useState("");
-  const [imageProof, setImageProof] = useState<File>();
+  const [imageProof, setImageProof] = useState<string[]>([]);
   const [residence, setResidence] = useState("");
   const [agree, setAgree] = useState("");
   const [crypto,setCrypto] = useState('')
