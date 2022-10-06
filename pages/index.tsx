@@ -21,6 +21,7 @@ const Home: NextPage = () => {
 
   useEffect(() =>{
    const user = JSON.parse(localStorage.getItem("userInfo") || 'false')
+   
 
     if (user) setToken(true)
   },[token])

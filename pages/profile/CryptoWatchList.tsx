@@ -14,7 +14,11 @@ const CryptoWatchList = ({user}:UserProps) => {
     <div>
         <h1 className="text-center text-2xl">CryptoWatchList</h1>
     </div>
-    <Carousel data={user[0]?.cryptoWatchList} num1={1} num2={2} num3={3} />
+    {user[0]?.cryptoWatchList?
+        <Carousel data={user[0]?.cryptoWatchList} num1={1} num2={2} num3={3} />
+        :
+        <p>Currently not watching any WatchList</p>
+        }
 </div>
   )
 }

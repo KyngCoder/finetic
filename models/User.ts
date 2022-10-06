@@ -16,8 +16,16 @@ import mongoose from "mongoose";
   employmentStatus: String;
   sourceOfFunds: String;
   annualIncome: String;
-  imageProof: String;
   funds: Number;
+  idProof:[{
+    data_url:string,
+  }],
+  passportProof:[{
+    data_url:string,
+  }],
+  driverProof:[{
+    data_url:string,
+  }],
   stocks: [
     {
       id: String;
@@ -73,7 +81,15 @@ const UserSchema = new mongoose.Schema<IUsers>(
     employmentStatus: String,
     sourceOfFunds: String,
     annualIncome: String,
-    imageProof: String,
+    idProof:[{
+      data_url:String,
+    }],
+    driverProof:[{
+      data_url:String,
+    }],
+    passportProof:[{
+      data_url:String,
+    }],
     funds: Number,
     stocks: [
       {

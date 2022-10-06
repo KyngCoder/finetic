@@ -11,7 +11,12 @@ const MyStock = ({user}:UserProps) => {
         <div>
             <h1 className="text-center text-2xl">My Stocks</h1>
         </div>
+        {user[0]?.stocks?
         <Carousel data={user[0]?.stocks} num1={1} num2={2} num3={3} />
+        :
+        <p>No stocks as yet</p>
+        }
+        
     </div>
   )
 }

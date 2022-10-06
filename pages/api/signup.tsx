@@ -21,6 +21,7 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
 
     case "POST":
       const { email, password, telephone } = req.body;
+      console.log(req.body)
       console.log(email,password,telephone)
 
       if (!email || !password || !telephone) {
@@ -53,11 +54,9 @@ const SignUp = async (req: NextApiRequest, res: NextApiResponse) => {
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const user = await User.create({
-          password: hashedPassword,
-          email: email,
-          telephone: telephone,
-        });
+        console.log(hashedPassword)
+
+        const user = await User.create(req.body);
 
         console.log(user);
 

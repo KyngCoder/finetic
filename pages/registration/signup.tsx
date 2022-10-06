@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Step, Stepper } from "react-form-stepper";
 import { useRouter } from "next/router";
 import Sign1 from "../../components/forms/Sign1";
 import Sign2 from "../../components/forms/Sign2";
@@ -11,7 +10,7 @@ import axios from "axios";
 
 const SignUp = () => {
   const [step, setStep] = useState(0);
-
+  const [size,setSize] = useState(0)
 
   const router = useRouter();
 
@@ -32,13 +31,17 @@ const SignUp = () => {
     employmentStatus,
     sourceOfFunds,
     annualIncome,
-    proofType,
-    imageProof,
+    passportProof,
+    idProof,
+    driverProof
   } = useAuth();
 
+  console.log(passportProof)
+
   const nextForm = async () => {
-    if (step < 5) {
+    if (step < 5 || size < 100) {
       setStep((step) => step + 1);
+      setSize((size) => size + 20)
     }
     if (step === 5) {
       const {data} = await axios.post("http://localhost:3000/api/signup", {
@@ -58,8 +61,9 @@ const SignUp = () => {
         employmentStatus,
         sourceOfFunds,
         annualIncome,
-        proofType,
-        imageProof,
+        idProof,
+        driverProof,
+        passportProof
       });
       console.log(data)
       localStorage.setItem("userInfo", JSON.stringify(data));
@@ -68,7 +72,10 @@ const SignUp = () => {
   };
 
   const previousForm = () => {
-    if (step > 1) setStep((step) => step - 1);
+    if (step > 1 || size > 0){
+    setStep((step) => step - 1);
+    setSize(size => size - 20)
+    }
   };
 
   const displayPage = () => {
@@ -85,15 +92,13 @@ const SignUp = () => {
     overflow-x-hidden  back"
     >
       <div className="  rounded-md shadow-md">
-        <div className="App my-4">
-          <Stepper activeStep={step}  connectorStateColors  >
-            <Step label="Children Step 1"  />
-            <Step label="Children Step 2" />
-            <Step label="Children Step 3" />
-            <Step label="Children Step 4" />
-            <Step label="Children Step 5"  />
-          </Stepper>
-        </div>
+       
+
+        
+  <div className={`${size>100? 'hidden': 'w-full  bg-gray-200 rounded-full dark:bg-gray-700'}`}>
+    <div className={`${size < 1? 'bg-gray-200' : 'bg-green-600 h-8 text-xs font-medium text-blue-100 flex justify-center items-center p-0.5 leading-none rounded-full' }`} style={{width:`${size}%`}} > {size}%</div>
+  </div>
+
 
         <div>{displayPage()}</div>
 

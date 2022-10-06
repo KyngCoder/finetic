@@ -14,7 +14,11 @@ const StockWatchList = ({user}:UserProps) => {
     <div>
         <h1 className="text-center text-2xl">StockWatchList</h1>
     </div>
-    <Carousel data={user[0]?.stockWatchList} num1={1} num2={2} num3={3} />
+    {user[0]?.stocks?
+        <Carousel data={user[0]?.stockWatchList} num1={1} num2={2} num3={3} />
+        :
+        <p>Currently not watching any stocks</p>
+        }
 </div>
   )
 }

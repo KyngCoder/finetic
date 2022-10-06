@@ -25,8 +25,9 @@ export type userType = {
   employmentStatus: string;
   sourceOfFunds: string;
   annualIncome: string;
-  proofType: string;
-  imageProof: any;
+  passportProof: any;
+  idProof: any;
+  driverProof: any;
   setFirstName: (value: SetStateAction<string>) => void;
   setLastName: (value: SetStateAction<string>) => void;
   setCountry: (value: SetStateAction<string>) => void;
@@ -44,8 +45,9 @@ export type userType = {
   setEmploymentStatus: (value: SetStateAction<string>) => void;
   setSourceOfFunds: (value: SetStateAction<string>) => void;
   setAnnualIncome: (value: SetStateAction<string>) => void;
-  setProofType: (value: SetStateAction<string>) => void;
-  setImageProof: (value: SetStateAction<File | undefined> ) => void;
+  setPassportProof: (value: SetStateAction<string| undefined> ) => void;
+  setIdProof: (value: SetStateAction<string | undefined> ) => void;
+  setDriverProof: (value: SetStateAction<string | undefined> ) => void;
   setAgree: (value: SetStateAction<string>) => void;
   agree: string;
   crypto:string,
@@ -72,8 +74,9 @@ const authContextDefaultValues: userType = {
   employmentStatus: "",
   sourceOfFunds: "",
   annualIncome: "",
-  proofType: "",
-  imageProof: [""],
+  idProof: [""],
+  passportProof: [""],
+  driverProof: [""],
   setFirstName: () => {},
   setLastName: () => {},
   setCountry: () => {},
@@ -91,8 +94,9 @@ const authContextDefaultValues: userType = {
   setEmploymentStatus: () => {},
   setSourceOfFunds: () => {},
   setAnnualIncome: () => {},
-  setImageProof: () => {},
-  setProofType: () => {},
+  setIdProof: () => {},
+  setPassportProof: () => {},
+  setDriverProof: () => {},
   setAgree: () => {},
   agree: "",
   crypto:"",
@@ -127,8 +131,9 @@ export function AuthProvider({ children }: Props) {
   const [employmentStatus, setEmploymentStatus] = useState("");
   const [sourceOfFunds, setSourceOfFunds] = useState("");
   const [annualIncome, setAnnualIncome] = useState("");
-  const [proofType, setProofType] = useState("");
-  const [imageProof, setImageProof] = useState<string[]>([]);
+  const [idProof, setIdProof] = useState<string[]>([]);
+  const [passportProof, setPassportProof] = useState<string[]>([]);
+  const [driverProof, setDriverProof] = useState<string[]>([]);
   const [residence, setResidence] = useState("");
   const [agree, setAgree] = useState("");
   const [crypto,setCrypto] = useState('')
@@ -152,8 +157,9 @@ export function AuthProvider({ children }: Props) {
     employmentStatus,
     sourceOfFunds,
     annualIncome,
-    proofType,
-    imageProof,
+    idProof,
+    driverProof,
+    passportProof,
     setFirstName,
     setLastName,
     setAddressLineOne,
@@ -168,8 +174,9 @@ export function AuthProvider({ children }: Props) {
     setRepeatPassword,
     setResidence,
     setSourceOfFunds,
-    setImageProof,
-    setProofType,
+    setIdProof,
+    setPassportProof,
+    setDriverProof,
     setTelephone,
     setZipCode,
     setState,

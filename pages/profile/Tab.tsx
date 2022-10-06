@@ -2,6 +2,7 @@
 import React,{useState, useEffect, ChangeEvent} from 'react'
 import {MdNotifications, MdMessage} from 'react-icons/md'
 import Image from "next/image"
+import axios from 'axios'
 
   
 
@@ -13,8 +14,24 @@ const Tab = () => {
       localStorage.removeItem("userInfo");
       location.reload();
     }
+
+    const [user, setUser] = useState([]);
+
+  const getUser = async (searchEmail: string) => {
+    const u = await axios.get(
+      `http://localhost:3000/api/getUser?email=${searchEmail}`
+    );
+    const data = u.data.data;
+    setUser(data);
+  };
       
- 
+    useEffect(() => {
+      const email= JSON.parse(localStorage.getItem("userInfo") || "{}");
+      const searchEmail = email?.user?.email;
+      getUser(searchEmail);
+    }, []);
+  
+ console.log(user)
   return (
     
 <nav className=" border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900">
@@ -30,18 +47,15 @@ const Tab = () => {
 
   <div className="flex flex-col justify-center items-center md:order-2">
       <button   type="button" className="flex mr-3 text-sm  bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-         <img onClick={() => setState(!state)}  className="w-8 h-8 rounded-full" src="" alt="user photo" /> 
+         <img onClick={() => setState(!state)}  className="w-8 h-8 rounded-full" src={user[0]?.passportProof[0]?.data_url || user[0]?.idProof[0]?.data_url || user[0]?.driverProof[0]?.data_url || " "} alt="user photo" /> 
       </button>
       
       <div className={`${state? 'block' : 'hidden'}  z-50  text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600`} id="user-dropdown" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom">
         <div className="py-3 px-4">
-          <span className="block text-sm text-gray-900 dark:text-white">Ricardo Merchant</span>
-          <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">kyngcoder</span>
+          <span className="block text-sm text-gray-900 dark:text-white">{user[0]?.firstName} {user[0]?.lastName}</span>
+          <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user[0]?.firsName?.slice(0,1)} {user[0]?.lastName?.slice(0,1)}</span>
         </div>
         <ul className="py-1" aria-labelledby="user-menu-button">
-          <li>
-            <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
-          </li>
           <li>
             <a href="#" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
           </li>

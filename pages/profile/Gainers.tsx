@@ -13,7 +13,11 @@ const Gainers = ({user}:UserProps) => {
       <div>
             <h1 className="text-center text-2xl">{user[0]?.firstName} Cryptos</h1>
         </div>
-      <Carousel data={user[0]?.crypto}  num1={1} num2={2} num3={3} />
+        {user[0]?.crypto?
+        <Carousel data={user[0]?.crypto} num1={1} num2={2} num3={3} />
+        :
+        <p>No Crypto as yet</p>
+        }
     </div>
   );
 };
