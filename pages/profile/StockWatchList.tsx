@@ -3,7 +3,7 @@ import Carousel from '../../components/Carousel'
 import { UserProps } from '../../helpers/Types'
 
 
-const StockWatchList = ({user}:UserProps) => {
+const StockWatchList = ({person}:UserProps) => {
 
     
 
@@ -14,10 +14,10 @@ const StockWatchList = ({user}:UserProps) => {
     <div>
         <h1 className="text-center text-2xl">StockWatchList</h1>
     </div>
-    {user[0]?.stocks?
-        <Carousel data={user[0]?.stockWatchList} num1={1} num2={2} num3={3} />
+    {person[0]?.stocks?
+        <Carousel data={person[0]?.stockWatchList} num1={1} num2={2} num3={3} />
         :
-        <p>Currently not watching any stocks</p>
+        <p className="text-4xl text-center py-4 text-gray-600">Currently not watching any stocks</p>
         }
 </div>
   )

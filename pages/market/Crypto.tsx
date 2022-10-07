@@ -2,38 +2,36 @@ import axios from "axios";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import useDebounce from "../hooks/useDebounce";
 import AllCoin from "./AllCoin";
+import { SearchTerm } from "./SearchTerm";
 import TrendingCoin from "./Trending";
 import Watchlist from "./Watchlist";
+
+type Search = {
+  id: string;
+  image: {
+    small: string;
+  };
+};
 
 const Crypto = () => {
   const [index, setIndex] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchData, setSearchData] = useState([]);
-
-  
-
-
+  const [searchData, setSearchData] = useState<Search | null>(null);
 
   const debouncedSearch = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
-   
-
-    const fetchData = async() => {
-
-      setSearchData([]);
+    const fetchData = async () => {
+      setSearchData(null);
 
       const data = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${debouncedSearch}?localization=false`
-      )
+      );
       setSearchData(data.data);
-    }
+    };
 
     if (debouncedSearch) fetchData();
   }, [debouncedSearch]);
-
-
-
 
   const choose = () => {
     if (index === 1) return <AllCoin />;
@@ -42,7 +40,7 @@ const Crypto = () => {
   };
 
   const displayData = () => {
-    if (searchTerm) return <p>{JSON.stringify(searchData?.id)}</p>;
+    if (searchTerm) return;
     else return choose();
   };
 
@@ -128,6 +126,7 @@ const Crypto = () => {
                 }
               />
             </div>
+            <SearchTerm term={searchTerm} searchData={searchData} />
           </form>
         </div>
       </div>

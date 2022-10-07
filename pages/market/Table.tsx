@@ -1,7 +1,7 @@
 import React, { FC, useEffect } from "react";
-import Image from "next/image";
+
 import Link from "next/link";
-import { useAuth } from "../../context/UserData";
+
 
 type CoinsProps = {
   data: {
@@ -18,7 +18,7 @@ type CoinsProps = {
 
 const Table: FC<CoinsProps> = ({ data }) => {
 
-  const {crypto,setCrypto} = useAuth()
+
 
   const setSearchTerm = (coin:string) => {
     localStorage.setItem('searchTerm',coin)

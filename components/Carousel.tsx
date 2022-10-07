@@ -14,7 +14,9 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 import {Asset} from '../helpers/Types'
 
-const Active:FC = ({data,num1,num2,num3}:{data:Asset, num1:number, num2:number, num3:number}) => {
+
+
+const Active = ({data,num1,num2,num3}:{data:Asset, num1:number, num2:number, num3:number}) => {
 
   
 
@@ -67,7 +69,7 @@ const Active:FC = ({data,num1,num2,num3}:{data:Asset, num1:number, num2:number, 
                         <p>{stock?.price}</p>
                       </div>
                       <div>
-                        {stock?.profitPercentage > 0 ? (
+                        {stock?.profitPercentage && stock?.profitPercentage > 0 ? (
                           <ImArrowUpRight className="text-green-600 h-6 w-6" />
                         ) : (
                           <ImArrowDownLeft className="text-red-600 h-6 w-6" />

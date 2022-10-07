@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, FC } from "react";
 import { Favourites } from "../../components/data/Data";
 import Carousel from '../../components/Carousel'
 import { UserProps } from "../../helpers/Types";
 
-const Gainers = ({user}:UserProps) => {
+const Gainers:FC<UserProps> = ({person}) => {
 
   
  
@@ -11,12 +11,12 @@ const Gainers = ({user}:UserProps) => {
 
     <div className="">
       <div>
-            <h1 className="text-center text-2xl">{user[0]?.firstName} Cryptos</h1>
+            <h1 className="text-center text-2xl">{person[0]?.firstName} Cryptos</h1>
         </div>
-        {user[0]?.crypto?
-        <Carousel data={user[0]?.crypto} num1={1} num2={2} num3={3} />
+        {person[0]?.crypto?
+        <Carousel data={person[0]?.crypto} num1={1} num2={2} num3={3} />
         :
-        <p>No Crypto as yet</p>
+        <p className="text-4xl text-center py-4 text-gray-600">No Crypto as yet</p>
         }
     </div>
   );

@@ -38,17 +38,17 @@ const Main: FC = () => {
       </div>
 
       <div>
-        <Gainers user={user} />
+        <Gainers person={user}/>
       </div>
       <div>
-        <MyStock user={user} />
+        <MyStock person={user}/>
       </div>
 
       <div className="mr-16">
-        <CryptoWatchList user={user} />
+        <CryptoWatchList person={user}/>
       </div>
       <div className="mr-16">
-        <StockWatchList user={user} />
+        <StockWatchList person={user} />
       </div>
     </>
   );

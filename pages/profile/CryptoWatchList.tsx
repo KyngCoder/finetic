@@ -1,9 +1,10 @@
 
+import { FC } from 'react'
 import Carousel from '../../components/Carousel'
 import { UserProps } from '../../helpers/Types'
 
 
-const CryptoWatchList = ({user}:UserProps) => {
+const CryptoWatchList:FC<UserProps> = ({person}) => {
 
     
 
@@ -14,10 +15,10 @@ const CryptoWatchList = ({user}:UserProps) => {
     <div>
         <h1 className="text-center text-2xl">CryptoWatchList</h1>
     </div>
-    {user[0]?.cryptoWatchList?
-        <Carousel data={user[0]?.cryptoWatchList} num1={1} num2={2} num3={3} />
+    {person[0]?.cryptoWatchList?
+        <Carousel data={person[0]?.cryptoWatchList} num1={1} num2={2} num3={3} />
         :
-        <p>Currently not watching any WatchList</p>
+        <p className="text-4xl text-center py-4 text-gray-600">Currently not watching any WatchList</p>
         }
 </div>
   )

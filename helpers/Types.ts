@@ -15,7 +15,21 @@ export type User = {
     employmentStatus: string
     sourceOfFunds: string
     annualIncome: string
-    imageProof: string
+    passportProof:[
+      {
+        data_url:string
+      }
+    ]
+    driverProof:[
+      {
+        data_url:string
+      }
+    ]
+    idProof:[
+      {
+        data_url:string
+      }
+    ]
     funds: number
     stocks: [
       {
@@ -57,7 +71,7 @@ export type User = {
 }[]
   
 export type UserProps = {
-    user:{
+    person:{
         _id: string
         firstName: string
         lastName: string
@@ -74,7 +88,21 @@ export type UserProps = {
         employmentStatus: string
         sourceOfFunds: string
         annualIncome: string
-        imageProof: string
+        passportProof:[
+          {
+            data_url:string
+          }
+        ]
+        driverProof:[
+          {
+            data_url:string
+          }
+        ]
+        idProof:[
+          {
+            data_url:string
+          }
+        ]
         funds: number
         stocks: [
           {
@@ -117,14 +145,14 @@ export type UserProps = {
 }
 
 export type Asset =  {
-    id: string
+    id?: string
     symbol: string
     name: string
-    price: number
-    amount: number
-    total: number
-    profit: number
-    profitPercentage: number
+    price?: number
+    amount?: number
+    total?: number
+    profit?: number
+    profitPercentage?: number
 }[]
 
 export type Graph = {
