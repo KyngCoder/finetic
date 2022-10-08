@@ -41,7 +41,7 @@ export default function Details() {
   const [currency, setCurrency] = useState("usd");
   const [period, setPeriod] = useState(7);
   const getSearchTerm = () => {
-    const searchTerm = localStorage.getItem("searchTerm");
+    const searchTerm = (localStorage.getItem("searchTerm") || " ");
     setCrypto(searchTerm);
   };
 

@@ -126,7 +126,7 @@ const Crypto = () => {
                 }
               />
             </div>
-            <SearchTerm term={searchTerm} searchData={searchData} />
+            <SearchTerm term={searchTerm} searchData={searchData} type="crypto" />
           </form>
         </div>
       </div>

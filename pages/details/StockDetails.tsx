@@ -38,7 +38,7 @@ type DataType = {
 
 export default function StockDetails() {
   const [info, setInfo] = useState<any>([]);
-  const [crypto, setCrypto] = useState([]);
+  const [crypto, setCrypto] = useState('');
   const [period, setPeriod] = useState(7);
   const [currency, setCurrency] = useState("usd");
   const [days, setDays] = useState(1);
@@ -46,7 +46,7 @@ export default function StockDetails() {
   const [active, setActive] = useState(0);
 
   const getSearchTerm = () => {
-    const searchTerm = localStorage.getItem("searchTerm");
+    const searchTerm = (localStorage.getItem("searchTerm") || " ");
     setCrypto(searchTerm);
   };
 

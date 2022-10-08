@@ -4,26 +4,48 @@ import Commodities from './Commodities';
 import ETF from './ETF';
 import GainerLoser from './GainerLoser';
 import Tradable from './Tradable';
+import useDebounce from "../hooks/useDebounce";
+import { SearchTerm } from "./SearchTerm";
+
+type Search = {
+  id: string;
+  image: {
+    small: string;
+  };
+};
+
 
 
 const Stock = () => {
 
     const [index, setIndex] = useState(1);
-    const [searchTerm,setSearchTerm] = useState("bitcoin")
-    const [searchData,setSearchData] = useState([])
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchData, setSearchData] = useState<Search | null>(null);
+
+
+  
+    const debouncedSearch = useDebounce(searchTerm, 1000);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        setSearchData(null);
+  
+        const data = await axios.get(
+          `https://financialmodelingprep.com/api/v3/profile/${debouncedSearch}?apikey=f777da10da2c1a70cd2f09fc262d7533`
+        );
+      
+        setSearchData(data.data[0]);
+      };
+  
+      if (debouncedSearch) fetchData();
+    }, [debouncedSearch]);
+  
 
     
 
-    useEffect(()=>{
-      const getSearchTerm = async() => {
-        console.log(searchTerm)
-        const data = await axios.get( `https://api.coingecko.com/api/v3/coins/${searchTerm}?localization=false`) 
-        console.log(data)
-      }
-      getSearchTerm()
-    },[searchTerm])
+ 
 
-    console.log('searchterml', searchTerm)
+   
 
     const choose = () => {
       if(index === 1)return <Tradable />
@@ -31,6 +53,11 @@ const Stock = () => {
       else if (index === 3) return <Commodities />
       else return <ETF />
    }
+
+   const displayData = () => {
+    if (searchTerm) return;
+    else return choose();
+  };
 
   return (
     <div>
@@ -121,12 +148,13 @@ const Stock = () => {
                 className="block p-2 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search a coin"
                 value={searchTerm}
-                onChange={(e:ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               />
             </div>
+            <SearchTerm term={searchTerm} searchData={searchData} type="stock" />
           </form>
         </div>
-        {choose()}
+        {displayData()}
     </div>
   )
 }
