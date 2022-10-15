@@ -1,11 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import AllCoin from "./AllCoin";
 import Image from "next/image"
 import TrendingCoin from "./Trending";
 import Crypto from "./Crypto";
 import Stock from "./Stock";
 import Link from "next/link";
+import { User } from "../../helpers/Types";
 
 
 
@@ -20,23 +21,23 @@ interface Coins {
   market_cap_change_24h: number;
 }
 
-const Market = () => {
+const Market:FC = () => {
   const [choice, setChoice] = useState(2);
-  const [user,setUser] = useState([])
+  const [user,setUser] = useState<User>([])
  
 
-
+  const getUser = async(searchEmail:string) => {
+    const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
+    const data = u.data.data[0]
+    setUser(data)
+   }
  
 
   useEffect(()=>{
-    const email = JSON.parse(localStorage.getItem('userInfo'))
-const searchEmail = email.user.email
-    const getUser = async(searchEmail) => {
-      const u =  await axios.get(`http://localhost:3000/api/getUser?email=${searchEmail}`)
-      const data = u.data.data[0]
-      setUser(data)
-     }
-    getUser()
+    const email= JSON.parse(localStorage.getItem("userInfo") || "{}");
+    const searchEmail = email?.result?.email;
+    getUser(searchEmail);
+  
   },[])
 
 
@@ -64,7 +65,7 @@ const searchEmail = email.user.email
             />
           </div>
           <div className="flex items-center ml-2">
-            <p>{user?.firstName} {user?.lastName}</p>
+            <p>{user && user[0]?.firstName} {user && user[0]?.lastName}</p>
           </div>
         </div>
       </div>

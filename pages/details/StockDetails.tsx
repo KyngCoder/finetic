@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {CoinInfo} from '../../helpers/Types'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -37,7 +38,7 @@ type DataType = {
 }[];
 
 export default function StockDetails() {
-  const [info, setInfo] = useState<any>([]);
+  const [info, setInfo] = useState<CoinInfo>([]);
   const [crypto, setCrypto] = useState('');
   const [period, setPeriod] = useState(7);
   const [currency, setCurrency] = useState("usd");
@@ -154,11 +155,11 @@ export default function StockDetails() {
           </div>
           <Line
             data={{
-              labels: info?.map((coin) => coin.label.split(", ")[0]),
+              labels: info?.map((coin) => coin?.label?.split(", ")[0]),
 
               datasets: [
                 {
-                  data: info?.map((coin) => coin.high),
+                  data: info?.map((coin) => coin?.high),
                   label: `${crypto} Price ( Past ${period} Days ) in USD`,
                   borderColor: "#EEBC1D",
                 },

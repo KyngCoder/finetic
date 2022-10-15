@@ -35,15 +35,11 @@ type DataType = {
 
 export default function Details() {
   const [info, setInfo] = useState([]);
-  const [crypto, setCrypto] = useState();
+  const [crypto, setCrypto] = useState("");
   const [data, setData] = useState<DataType>();
   const [active, setActive] = useState(0);
   const [currency, setCurrency] = useState("usd");
   const [period, setPeriod] = useState(7);
-  const getSearchTerm = () => {
-    const searchTerm = (localStorage.getItem("searchTerm") || " ");
-    setCrypto(searchTerm);
-  };
 
   useEffect(() => {
     getSearchTerm();
@@ -75,6 +71,11 @@ export default function Details() {
     else return <Watch data={data} type="cryptoWatchList" />;
   };
 
+  const getSearchTerm = () => {
+    const searchTerm = (localStorage.getItem("searchTerm") || " ");
+    setCrypto(searchTerm);
+  };
+
 
   return (
     <div className="bg-gray-900 h-screen overflow-x-hidden p-8 text-white  justify-between w-screen">
@@ -84,7 +85,7 @@ export default function Details() {
             <img className="" src={data?.image?.large} alt="bitcoin" />
           </div>
           <p className="text-lg my-2">
-            {ReactHtmlParser(data?.description?.en.split(". ")[0])}
+            {ReactHtmlParser(data?.description?.en?.split(". ")[0] || " ")}
           </p>
           <p className="font-bold text-2xl">
             Rank:{" "}

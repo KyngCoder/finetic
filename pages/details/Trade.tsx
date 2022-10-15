@@ -1,20 +1,22 @@
 import axios from "axios";
 
+
+
 import React, { ChangeEvent, useEffect, useState } from "react";
 
-const Trade = ({ data, type, category }) => {
+const Trade = ({ data, type, category }:{data:any, type:string, category:string}) => {
   const [amount, setAmount] = useState("1");
   const [total, setTotal] = useState<number>(1);
   const [price,setPrice] = useState(0)
 
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState<any>([]);
 
   useEffect(() => {
-    const email = JSON.parse(localStorage.getItem("userInfo"));
-    const searchEmail = email.user.email;
+    const email = JSON.parse(localStorage.getItem("userInfo") || " ");
+    const searchEmail = email?.user?.email;
   
 
-    const getUser = async ({ searchEmail }) => {
+    const getUser = async ({ searchEmail }:{searchEmail:string}) => {
       const u = await axios.get(
         `http://localhost:3000/api/getUser?email=${searchEmail}`
       );
@@ -26,14 +28,15 @@ const Trade = ({ data, type, category }) => {
 
   useEffect(() => {
       // setting price based of if the data is for stock/crypto
-      setPrice(type === 'stockWatchList'? `${data[0]?.price}` : `${data?.market_data?.current_price.usd}`)
+      console.log(data?.market_data?.current_price.usd)
+      type === 'stockWatchList'? setPrice( data[0]?.price) : setPrice(data?.market_data?.current_price.usd)
     if (amount === "") setTotal(0);
     else setTotal(price * parseInt(amount));
   }, [amount,price,data,type]);
 
   const updateCrypto = async () => {
     await axios.put("/api/updateCrypto", {
-      _id: user._id,
+      _id: user?._id,
       crypto: {
         id: data.id,
         symbol: data.symbol,

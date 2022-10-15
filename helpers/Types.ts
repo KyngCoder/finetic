@@ -159,3 +159,9 @@ export type Graph = {
   label:string
   high: number
 }[]
+
+export type CoinInfo = 
+    {
+      "high": 370.26,
+      "label": "October 14, 22",
+    }[]
